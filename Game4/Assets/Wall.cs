@@ -18,6 +18,11 @@ public class Wall : MonoBehaviour
         wear = 0;
     }
 
+    public void setType(int type)
+    {
+
+    }
+
     public bool Drill(float time)
     {
         wear += time;
@@ -40,9 +45,4 @@ public class Wall : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
