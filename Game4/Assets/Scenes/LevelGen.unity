@@ -409,6 +409,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 511950589911109846, guid: 6dcff4189ab4ea540884e360757675a6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 511950589911109846, guid: 6dcff4189ab4ea540884e360757675a6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 511950589911109846, guid: 6dcff4189ab4ea540884e360757675a6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 511950589911109847, guid: 6dcff4189ab4ea540884e360757675a6, type: 3}
       propertyPath: m_Name
       value: WallTile
