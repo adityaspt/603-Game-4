@@ -14,7 +14,6 @@ public class Drill : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Trigger!");
         if (collision.gameObject.tag == "Wall")
         {
             currentWalls.Add(collision.GetComponent<Wall>());
