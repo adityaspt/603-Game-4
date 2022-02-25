@@ -52,6 +52,10 @@ public class Wall : MonoBehaviour
                 strength = 2.0f;
                 mat.SetColor("_Color", new Color(0.7835f, 0.7835f, 0.7835f)); // light grey
                 break;
+            case 6: // Gem
+                strength = 3.0f;
+                mat.SetColor("_Color", new Color(0, 0.95f, 1)); // light blue
+                break;
 
             default:
                 break;

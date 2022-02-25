@@ -14,7 +14,7 @@ public class LevelGenerator : MonoBehaviour
     private float scale;
     private float cellWidth;
     private List<Vector2> cells;
-    private Vector2 currentCell;
+    public Vector2 currentCell;
     private Transform player;
 
     // Start is called before the first frame update
@@ -46,7 +46,7 @@ public class LevelGenerator : MonoBehaviour
                 Vector2 tryCell = new Vector2(i, j) + currentCell;
                 if (!cells.Contains(tryCell))
                 {
-                    createCellAt(new Vector2(i, j));
+                    createCellAt(tryCell);
                     cells.Add(tryCell);
                 }
             }
@@ -72,24 +72,47 @@ public class LevelGenerator : MonoBehaviour
             Wall wall = Instantiate(tile, pos, Quaternion.identity, transform).GetComponent<Wall>();
             Vector2 stardardGridCoords = start + pos * 0.2f;
             float noiseVal = Mathf.PerlinNoise(stardardGridCoords.x, stardardGridCoords.y);
+            Vector2 GemCoords = stardardGridCoords * 5;
+            float gemNoise = Mathf.PerlinNoise(GemCoords.x, GemCoords.y);
 
-            if (pos.sqrMagnitude < 15*15)
+            if (gemNoise > 0.85f)
             {
-                if (noiseVal < 0.5f)
-                    wall.setType(0);
-                else if (noiseVal < 0.75f)
-                    wall.setType(1);
-                else
-                    wall.setType(2);
+                wall.setType(6);
             }
-            else if (pos.sqrMagnitude < 20*20)
+            else
             {
-                if (noiseVal < 0.5f)
-                    wall.setType(0);
-                else if (noiseVal < 0.75f)
-                    wall.setType(1);
+                if (pos.sqrMagnitude < 10 * 10)
+                {
+                    if (noiseVal < 0.35f)
+                        wall.setType(0);
+                    else if (noiseVal < 0.65f)
+                        wall.setType(1);
+                    else if (noiseVal < 0.9f)
+                        wall.setType(2);
+                    else
+                        wall.setType(3);
+                }
+                else if (pos.sqrMagnitude < 20 * 20)
+                {
+                    float lerpVal = (pos.magnitude - 10) / 10;
+                    lerpVal *= Mathf.PerlinNoise(stardardGridCoords.x * 0.5f, stardardGridCoords.y * 0.5f) / 2;
+
+                    if (noiseVal + lerpVal < 0.5f)
+                        wall.setType(0);
+                    else if (noiseVal + lerpVal < 1.5f)
+                        wall.setType(1);
+                    else
+                        wall.setType(4);
+                }
                 else
-                    wall.setType(2);
+                {
+                    if (noiseVal < 0.5f)
+                        wall.setType(1);
+                    else if (noiseVal < 0.75f)
+                        wall.setType(4);
+                    else
+                        wall.setType(5);
+                }
             }
         }
     }
@@ -97,6 +120,11 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 playerCell = new Vector2();
+        Vector2 playerCell = new Vector2(Mathf.Round(player.position.x /cellWidth), Mathf.Round(player.position.y / cellWidth));
+        if (playerCell != currentCell)
+        {
+            currentCell = playerCell;
+            makeAdjacentCells();
+        }
     }
 }
