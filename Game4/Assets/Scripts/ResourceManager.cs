@@ -6,13 +6,13 @@ public class ResourceManager : MonoBehaviour
 {
 
     public int goldAmount;
-    private int premiumCurrencyAmount;
+    public int premiumCurrencyAmount;
 
     // Start is called before the first frame update
     void Start()
     {
-        goldAmount = 0;
-        premiumCurrencyAmount = 0;
+        goldAmount = 5;
+        premiumCurrencyAmount = 3;
     }
 
     // Update is called once per frame
