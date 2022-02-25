@@ -27,16 +27,30 @@ public class Wall : MonoBehaviour
         switch (type)
         {
             case 0: // dirt
-                strength = 0.5f;
+                strength = 0.25f;
                 mat.SetColor("_Color", new Color(0.7358f, 0.4797f, 0.2464f)); // brown
                 break;
-            case 1: // stone
-                strength = 1.0f;
-                mat.SetColor("_Color", new Color(0.4245f, 0.4245f, 0.4245f)); // brown
+            case 1: // hard dirt
+                strength = 0.5f;
+                mat.SetColor("_Color", new Color(0.5094f, 0.3457f, 0.1994f)); // brown
                 break;
-            case 2: // metal
+            case 2: // coal
+                strength = 0.75f;
+                mat.SetColor("_Color", new Color(0.3f, 0.3f, 0.3f)); // brown
+                break;
+            case 3: // Gold
+                strength = 1.0f;
+                mat.SetColor("_Color", new Color(1, 1, 0)); // brown
+                break;
+
+
+            case 4: // stone
+                strength = 1.0f;
+                mat.SetColor("_Color", new Color(0.4245f, 0.4245f, 0.4245f)); // grey
+                break;
+            case 5: // metal
                 strength = 2.0f;
-                mat.SetColor("_Color", new Color(0.7835f, 0.7835f, 0.7835f)); // brown
+                mat.SetColor("_Color", new Color(0.7835f, 0.7835f, 0.7835f)); // light grey
                 break;
 
             default:
