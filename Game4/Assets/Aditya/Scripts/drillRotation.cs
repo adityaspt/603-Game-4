@@ -6,6 +6,7 @@ public class drillRotation : MonoBehaviour
 {
     [SerializeField]
     private Transform aimTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +17,10 @@ public class drillRotation : MonoBehaviour
     void Update()
     {
         Vector3 mousePosition = GetMouseWorldPosition();
-        Vector3 aimDirection = (mousePosition - transform.position).normalized;
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        aimTransform.eulerAngles = new Vector3(0,0,angle);
-        Debug.Log(angle);
+        Vector3 aimDirection = (mousePosition - aimTransform.position);
+        aimDirection.z = 0;
+        aimDirection = aimDirection.normalized;
+        aimTransform.right = aimDirection;
     }
 
     public static Vector3 GetMouseWorldPosition()

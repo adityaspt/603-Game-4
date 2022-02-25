@@ -5,6 +5,7 @@ using UnityEngine;
 public class Drill : MonoBehaviour
 {
     public List<Wall> currentWalls = new List<Wall>();
+    public float drillSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +15,6 @@ public class Drill : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Trigger!");
         if (collision.gameObject.tag == "Wall")
         {
             currentWalls.Add(collision.GetComponent<Wall>());
@@ -36,7 +36,7 @@ public class Drill : MonoBehaviour
         {
             for (int i = 0; i < currentWalls.Count; i++)
             {
-                currentWalls[i].Drill(Time.deltaTime);
+                currentWalls[i].Drill(Time.deltaTime * drillSpeed);
             }
         }
     }
