@@ -22,6 +22,7 @@ public class Wall : MonoBehaviour
         mat = GetComponent<SpriteRenderer>().material;
         wear = 0;
 
+        Debug.Log(mat.GetFloat("_Dither"));
 
         this.type = type;
         switch (type)

@@ -1,4 +1,4 @@
-Shader "Hidden/BlockShader"
+Shader "Custom/BlockShader"
 {
     Properties
     {
@@ -97,5 +97,6 @@ Shader "Hidden/BlockShader"
             }
             ENDCG
         }
+
     }
 }
