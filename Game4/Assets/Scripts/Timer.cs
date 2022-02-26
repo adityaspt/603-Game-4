@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour
     {
         if (active)
         {
-            timeRemaining -= Time.deltaTime;
+            timeRemaining -= Time.unscaledDeltaTime;
             if(timeRemaining < 0)
             {
                 active = false;
