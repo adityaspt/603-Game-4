@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,39 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
 
+    public static ResourceManager resourceManagerInstance;
+    
+
+
     public int goldAmount;
     public int premiumCurrencyAmount;
+
+    //Resources
+    public int coalAmount = 0, metalAmount = 0, gemAmount = 0;
+    //
+
+    public event EventHandler<eventTriggerSet.eventTrigger> onAmountChanged;
+
+    
+
+    public  enum ResourceType
+    {
+        coal, metal, gem, gold
+    };
+    public static ResourceType resourceType;
+
+    private void Awake()
+    {
+        resourceManagerInstance = this;
+    }
+    private void OnEnable()
+    {
+        onAmountChanged += uiController.uiControllerInstance.updateAmountTextUI;
+    }
+    private void OnDisable()
+    {
+        onAmountChanged -= uiController.uiControllerInstance.updateAmountTextUI;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +50,42 @@ public class ResourceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(1))
+        {
+            AddResourceAmount(ResourceType.coal);
+        }
     }
+
+    //Metal
+    public void AddResourceAmount(ResourceType rt)
+    {
+        int resourceTypeInt = (int)rt;
+        switch (resourceTypeInt)
+        {
+            case 0:
+                coalAmount++;
+                break;
+            case 1:
+                metalAmount++;
+                break;
+            case 2:
+                gemAmount++;
+                break;
+            case 4:
+                goldAmount++;
+                break;
+        }
+        onAmountChanged?.Invoke(this, new eventTriggerSet.eventTrigger { resourceType = rt });
+    }
+    //
+
 
     public int GetGoldAmount()
     {
         return goldAmount;
     }
 
-    public int GetPremiumCurrencyAmount() 
+    public int GetPremiumCurrencyAmount()
     {
         return premiumCurrencyAmount;
     }

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Gold
+  - Coal
+  - Metal
+  - Gems
   layers:
   - Default
   - TransparentFX
