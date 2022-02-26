@@ -38,27 +38,27 @@ public class playerController : MonoBehaviour
         rb2d.MovePosition(rb2d.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Gold"))
+        if (collision.gameObject.CompareTag("Gold"))
         {
             ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gold);
             Destroy(collision.gameObject);
         }
-        else if (collision.CompareTag("Coal"))
+        else if (collision.gameObject.CompareTag("Coal"))
         {
             ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.coal);
             Destroy(collision.gameObject);
         }
-        else if (collision.CompareTag("Metal"))
+        else if (collision.gameObject.CompareTag("Metal"))
         {
             ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.metal);
             Destroy(collision.gameObject);
         }
-        else if (collision.CompareTag("Gems"))
+        else if (collision.gameObject.CompareTag("Gems"))
         {
             ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gem);
-           // Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
         }
         
        
