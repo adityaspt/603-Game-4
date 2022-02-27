@@ -12,6 +12,8 @@ public class playerController : MonoBehaviour
 
     private Vector2 movement;
 
+    public GameObject pauseCanvas;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -30,6 +32,13 @@ public class playerController : MonoBehaviour
         movement.x=   Input.GetAxisRaw("Horizontal");
       
         movement.y = Input.GetAxisRaw("Vertical");
+
+        //Check for Menu button
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            pauseCanvas.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     private void FixedUpdate()
