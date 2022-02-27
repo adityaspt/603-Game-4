@@ -32,6 +32,7 @@ public class ButtonHandler : MonoBehaviour
         upgradeCanvas.gameObject.SetActive(false);
         itemCanvas.gameObject.SetActive(false);
         goldCanvas.gameObject.SetActive(false);
+        pauseCanvas.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
     
