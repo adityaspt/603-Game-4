@@ -28,7 +28,7 @@ public class Wall : MonoBehaviour
         mat = GetComponent<SpriteRenderer>().material;
         wear = 0;
 
-        Debug.Log(mat.GetFloat("_Dither"));
+       // Debug.Log(mat.GetFloat("_Dither"));
 
         this.type = type;
 
@@ -96,7 +96,7 @@ public class Wall : MonoBehaviour
         {
             //Code to Spawn the resources on map to be collected by then player
             resourceSpawner.resourceSpawnerInstance.CreateResource(this.transform.position, this.transform.rotation,this.type);
-            print("Resource created; type " + this.type);
+          //  print("Resource created; type " + this.type);
         }
     }
 

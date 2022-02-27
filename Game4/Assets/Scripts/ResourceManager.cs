@@ -33,7 +33,7 @@ public class ResourceManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        onAmountChanged += uiController.uiControllerInstance.updateAmountTextUI;
+      
     }
     private void OnDisable()
     {
@@ -45,6 +45,7 @@ public class ResourceManager : MonoBehaviour
     {
         goldAmount = 5;
         premiumCurrencyAmount = 3;
+        onAmountChanged += uiController.uiControllerInstance.updateAmountTextUI;
     }
 
     // Update is called once per frame
