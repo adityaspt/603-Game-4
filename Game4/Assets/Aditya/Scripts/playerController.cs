@@ -30,8 +30,13 @@ public class playerController : MonoBehaviour
     {
         //Input
         movement.x=   Input.GetAxisRaw("Horizontal");
-      
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if ((float)Input.mousePosition.x / Camera.main.pixelWidth < 0.5f)
+            GetComponent<SpriteRenderer>().flipX = true;
+        else
+            GetComponent<SpriteRenderer>().flipX = false;
+
 
         //Check for Menu button
         if (Input.GetKeyDown(KeyCode.M))
