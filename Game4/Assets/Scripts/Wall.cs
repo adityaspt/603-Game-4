@@ -87,7 +87,7 @@ public class Wall : MonoBehaviour
         }
     }
 
-    void Break()
+    public void Break()
     {
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
