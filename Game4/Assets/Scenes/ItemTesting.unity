@@ -8869,6 +8869,22 @@ PrefabInstance:
       propertyPath: pauseCanvas
       value: 
       objectReference: {fileID: 435421611}
+    - target: {fileID: 5227029864441341932, guid: 44fd66de0f8086643801a1a1ef6240de, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227029864760984011, guid: 44fd66de0f8086643801a1a1ef6240de, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5522687
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227029864760984011, guid: 44fd66de0f8086643801a1a1ef6240de, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.013706058
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227029864760984013, guid: 44fd66de0f8086643801a1a1ef6240de, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44fd66de0f8086643801a1a1ef6240de, type: 3}
 --- !u!1001 &7549342454253810172
