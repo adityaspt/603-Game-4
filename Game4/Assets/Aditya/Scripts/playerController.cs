@@ -14,8 +14,8 @@ public class playerController : MonoBehaviour
 
     public GameObject pauseCanvas;
 
-    public int bombs;
-    public int lights;
+    //public int bombs;
+    //public int lights;
 
     public GameObject bombPrefab;
     public GameObject lightPrefab;
@@ -52,16 +52,16 @@ public class playerController : MonoBehaviour
         }
 
         // Bomb key
-        if (Input.GetKeyDown(KeyCode.Q) && bombs > 0)
+        if (Input.GetKeyDown(KeyCode.Q) && ResourceManager.resourceManagerInstance.bombs > 0)
         {
-            bombs--;
+            ResourceManager.resourceManagerInstance.UseABomb();
             Instantiate(bombPrefab, transform.position, Quaternion.identity);
         }
 
         // Light key
-        if (Input.GetKeyDown(KeyCode.E) && lights > 0)
+        if (Input.GetKeyDown(KeyCode.E) && ResourceManager.resourceManagerInstance.torches > 0)
         {
-            lights--;
+            ResourceManager.resourceManagerInstance.UseATorch();
             Instantiate(lightPrefab, transform.position, Quaternion.identity);
         }
     }
