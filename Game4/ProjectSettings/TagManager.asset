@@ -9,6 +9,7 @@ TagManager:
   - Coal
   - Metal
   - Gems
+  - Drill
   layers:
   - Default
   - TransparentFX

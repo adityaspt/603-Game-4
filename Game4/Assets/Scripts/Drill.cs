@@ -6,11 +6,17 @@ public class Drill : MonoBehaviour
 {
     public List<Wall> currentWalls = new List<Wall>();
     public float drillSpeed = 1;
+    public bool isDrilling;
+    public GameObject drillVFX;
+
+    private Animator animator;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();   
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,12 +38,24 @@ public class Drill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Set the drill animation and vfx
+        animator.SetBool("IsDrilling", isDrilling);
+        drillVFX.SetActive(isDrilling);
+
         if (Input.GetMouseButton(0))
         {
             for (int i = 0; i < currentWalls.Count; i++)
             {
                 currentWalls[i].Drill(Time.deltaTime * drillSpeed);
             }
+
+            isDrilling = true;
         }
+        else
+        {
+            isDrilling = false;
+        }
+
+       // isDrilling = false;
     }
 }
