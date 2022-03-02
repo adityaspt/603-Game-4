@@ -14,6 +14,12 @@ public class playerController : MonoBehaviour
 
     public GameObject pauseCanvas;
 
+    public int bombs;
+    public int lights;
+
+    public GameObject bombPrefab;
+    public GameObject lightPrefab;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -32,7 +38,7 @@ public class playerController : MonoBehaviour
         movement.x=   Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if ((float)Input.mousePosition.x / Camera.main.pixelWidth < 0.5f)
+        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
             GetComponent<SpriteRenderer>().flipX = true;
         else
             GetComponent<SpriteRenderer>().flipX = false;
@@ -43,6 +49,20 @@ public class playerController : MonoBehaviour
         {
             pauseCanvas.gameObject.SetActive(true);
             Time.timeScale = 0;
+        }
+
+        // Bomb key
+        if (Input.GetKeyDown(KeyCode.Q) && bombs > 0)
+        {
+            bombs--;
+            Instantiate(bombPrefab, transform.position, Quaternion.identity);
+        }
+
+        // Light key
+        if (Input.GetKeyDown(KeyCode.E) && lights > 0)
+        {
+            lights--;
+            Instantiate(lightPrefab, transform.position, Quaternion.identity);
         }
     }
 
