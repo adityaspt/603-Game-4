@@ -6,15 +6,23 @@ public class bomb : MonoBehaviour
 {
     public float timer;
     public float radius;
+    public GameObject explosionVFX;
 
     private float counter;
     private CircleCollider2D blaster;
+
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         blaster = GetComponent<CircleCollider2D>();
+        animator = GetComponent<Animator>();
         counter = 0;
+
+        explosionVFX.SetActive(false);
+
+        animator.SetTrigger("Explode");
     }
 
     // Update is called once per frame
@@ -22,10 +30,11 @@ public class bomb : MonoBehaviour
     {
         // counting down
         timer -= Time.deltaTime;
-
+       
         // blast!
         if (timer < 0)
         {
+            explosionVFX.SetActive(true);
             blaster.radius = radius;
         }
     }
