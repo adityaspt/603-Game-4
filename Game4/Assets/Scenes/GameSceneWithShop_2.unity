@@ -2036,7 +2036,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7771084, y: 1}
+    m_SensorSize: {x: 1.7769517, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4312,18 +4312,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b046141f377359478617d67775cfe23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dsp: {fileID: 0}
   dspTimeRemaining: 0
   dspTotalTime: 0
   dspSlider: {fileID: 0}
   dspTimeText: {fileID: 0}
+  dsi: {fileID: 0}
   dsiTimeRemaining: 0
   dsiTotalTime: 0
   dsiSlider: {fileID: 0}
   dsiTimeText: {fileID: 0}
+  bc: {fileID: 0}
   bcTimeRemaining: 0
   bcTotalTime: 0
   bcSlider: {fileID: 0}
   bcTimeText: {fileID: 0}
+  b: {fileID: 0}
   bTimeRemaining: 0
   bTotalTime: 0
   bSlider: {fileID: 0}
@@ -5135,27 +5139,6 @@ MonoBehaviour:
   drillSizeUpgrade: {fileID: 0}
   bagCapacityUpgrade: {fileID: 0}
   bombUpgrade: {fileID: 0}
-  dspUpgradeButton: {fileID: 0}
-  dsiUpgradeButton: {fileID: 0}
-  bcUpgradeButton: {fileID: 0}
-  bUpgradeButton: {fileID: 0}
-  dspUpgradeButtonText: {fileID: 0}
-  dsiUpgradeButtonText: {fileID: 0}
-  bcUpgradeButtonText: {fileID: 0}
-  bUpgradeButtonText: {fileID: 0}
-  dspProgressSlider: {fileID: 0}
-  dsiProgressSlider: {fileID: 0}
-  bcProgressSlider: {fileID: 0}
-  bProgressSlider: {fileID: 0}
-  timer: {fileID: 0}
-  dspUpgradeCompleteButton: {fileID: 0}
-  dsiUpgradeCompleteButton: {fileID: 0}
-  bcUpgradeCompleteButton: {fileID: 0}
-  bUpgradeCompleteButton: {fileID: 0}
-  dspSpeedUpButton: {fileID: 0}
-  dsiSpeedUpButton: {fileID: 0}
-  bcSpeedUpButton: {fileID: 0}
-  bSpeedUpButton: {fileID: 0}
   GoldPurchaseCanvas: {fileID: 2052715020}
   ItemPurchaseCanvas: {fileID: 820585397}
   UpgradeCanvas: {fileID: 2081575784}
@@ -6782,17 +6765,42 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741959247}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ff5d5042dce6543897704fec55c795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  index: 0
   requiredCoal: 0
   requiredMetal: 0
   requiredGem: 0
   requiredGold: 0
   requiredSpeedUp: 0
+  firstUpgradeText: {fileID: 0}
+  secondUpgradeText: {fileID: 0}
+  thirdUpgradeText: {fileID: 0}
+  fourthUpgradeText: {fileID: 0}
+  firstImage: {fileID: 0}
+  secondImage: {fileID: 0}
+  thirdImage: {fileID: 0}
+  fourthImage: {fileID: 0}
+  speedUpText: {fileID: 0}
+  upgradeButton: {fileID: 0}
+  upgradeButtonText: {fileID: 0}
+  progressSlider: {fileID: 0}
+  slider: {fileID: 0}
+  timeText: {fileID: 0}
+  upgradeCompleteButton: {fileID: 0}
+  speedUpButton: {fileID: 0}
+  oreSprite: {fileID: 0}
+  coalMat: {fileID: 0}
+  metalMat: {fileID: 0}
+  goldMat: {fileID: 0}
+  gemMat: {fileID: 0}
+  white: {r: 0, g: 0, b: 0, a: 0}
+  green: {r: 0, g: 0, b: 0, a: 0}
+  red: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1741959249
 Transform:
   m_ObjectHideFlags: 0

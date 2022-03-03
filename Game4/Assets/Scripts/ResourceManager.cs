@@ -100,22 +100,22 @@ public class ResourceManager : MonoBehaviour
 
 
     //Add Items
-    public void updateItemAmount(ItemType iT, bool isAdding)
+    public void updateItemAmount(ItemType iT, bool isAdding, int number)
     {
         int itemTypeInt = (int)iT;
         switch (itemTypeInt)
         {
             case 0:
                 if (isAdding)
-                    bombs++;
+                    bombs+=number;
                 else
-                    bombs--;
+                    bombs-=number;
                 break;
             case 1:
                 if (isAdding)
-                    torches++;
+                    torches+=number;
                 else
-                    torches--;
+                    torches-=number;
                 break;
             default:
                 Debug.LogWarning("Items enum not set properly");
@@ -138,22 +138,22 @@ public class ResourceManager : MonoBehaviour
 
     public void AddBomb(int amount)
     {
-        updateItemAmount(ItemType.bomb, true);
+        updateItemAmount(ItemType.bomb, true,amount);
     }
 
     public void AddTorch(int amount)
     {
-        updateItemAmount(ItemType.torches, true);
+        updateItemAmount(ItemType.torches, true,amount);
     }
 
     public void UseABomb() //Call in playercontroller
     {
-        updateItemAmount(ItemType.bomb, false);
+        updateItemAmount(ItemType.bomb, false,1);
     }
 
     public void UseATorch() //Call in playercontroller
     {
-        updateItemAmount(ItemType.torches, false);
+        updateItemAmount(ItemType.torches, false,1);
     }
 
     public int GetGoldAmount()
