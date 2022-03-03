@@ -12,11 +12,17 @@ public class Drill : MonoBehaviour
     private Animator animator;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();   
+    }
+
+    public void UpSize()
+    {
+        Vector3 newScale = transform.localScale;
+        newScale *= 1.2f;
+        transform.localScale = newScale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
