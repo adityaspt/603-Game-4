@@ -37,6 +37,10 @@ public class bomb : MonoBehaviour
             explosionVFX.SetActive(true);
             blaster.radius = radius;
         }
+        if (timer < -0.1f)
+        {
+            Destroy(transform);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
