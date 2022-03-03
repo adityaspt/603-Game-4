@@ -45,6 +45,8 @@ public class playerController : MonoBehaviour
     [SerializeField]
     ResourceManager resourceManager;
 
+    public float bombRadius;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -80,7 +82,8 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && ResourceManager.resourceManagerInstance.bombs > 0)
         {
             ResourceManager.resourceManagerInstance.UseABomb();
-            Instantiate(bombPrefab, transform.position, Quaternion.identity);
+            bomb b = Instantiate(bombPrefab, transform.position, Quaternion.identity).GetComponent<bomb>();
+            b.radius = bombRadius;
         }
 
         // Light key
