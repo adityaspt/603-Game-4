@@ -9,6 +9,8 @@ public class Dropbox : MonoBehaviour
 
     [SerializeField]
     Canvas dropBoxCanvas;
+
+    public Animator animator;
     private void Awake()
     {
        
@@ -19,6 +21,7 @@ public class Dropbox : MonoBehaviour
     void Start()
     {
         updateStorageAmountUI();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

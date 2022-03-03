@@ -20,6 +20,7 @@ public class bomb : MonoBehaviour
         animator = GetComponent<Animator>();
         counter = 0;
 
+        radius = 4;
         explosionVFX.SetActive(false);
 
         animator.SetTrigger("Explode");
@@ -37,7 +38,7 @@ public class bomb : MonoBehaviour
             explosionVFX.SetActive(true);
             blaster.radius = radius;
         }
-        if (timer < -0.1f)
+        if (timer < -0.4f)
         {
             Destroy(gameObject);
         }

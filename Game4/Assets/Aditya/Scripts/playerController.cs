@@ -180,6 +180,7 @@ public class playerController : MonoBehaviour
             // dropBoxReference = collision.gameObject.GetComponent<Dropbox>();
             isTouchingDropbox = true;
             dropBoxReference.ShowDropBoxCanvas();
+            dropBoxReference.animator.SetBool("IsOpen", isTouchingDropbox);
         }
 
         if (collision.gameObject.CompareTag("Shop"))
@@ -197,6 +198,7 @@ public class playerController : MonoBehaviour
         {
             isTouchingDropbox = false;
             dropBoxReference.HideDropBoxCanvas();
+            dropBoxReference.animator.SetBool("IsOpen", isTouchingDropbox);
         }
 
         
