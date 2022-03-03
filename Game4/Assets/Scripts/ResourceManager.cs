@@ -15,7 +15,7 @@ public class ResourceManager : MonoBehaviour
     public int coalAmount = 0, metalAmount = 0, gemAmount = 0;
 
     [Header("Storage Resources amounts")]
-    public int coalAmountStorage = 0, metalAmountStorage = 0, gemAmountStorage=0, goldAmountStorage=0;
+    public int coalAmountStorage = 0, metalAmountStorage = 0, gemAmountStorage = 0, goldAmountStorage = 0;
 
     public enum ResourceType
     {
@@ -38,9 +38,8 @@ public class ResourceManager : MonoBehaviour
     public event EventHandler<eventTriggerSet.itemEventTrigger> onItemAmountChanged;
 
 
+    //Increase these variables on bag capacity upgrades
     [Header("Bag capacity stuff")]
-    public int totalBagCapacity = 8;
-
     public int goldBagCapacity, coalBagCapacity, metalBagCapacity, gemBagCapacity;
 
     private void Awake()

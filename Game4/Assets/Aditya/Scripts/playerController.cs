@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class playerController : MonoBehaviour
 {
@@ -13,6 +14,15 @@ public class playerController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     private Vector2 movement;
+
+    [SerializeField]
+    GameObject playerPopUpText;
+
+    [SerializeField]
+    float popUpTextTime;
+
+    
+    float popUpTimeCounter;
 
     [Header("Pause UI")]
     public GameObject pauseCanvas;
@@ -85,12 +95,31 @@ public class playerController : MonoBehaviour
             dropBoxReference.TransferResourcesFromPlayerToStorage();
             isTouchingDropbox = false;
         }
+
+        if (setPopUpText)
+        {
+            popUpTimeCounter +=Time.deltaTime;
+            if (popUpTimeCounter >= popUpTextTime)
+            {
+                popUpTimeCounter = 0;
+                setPopUpText = false;
+                playerPopUpText.gameObject.SetActive(false);
+                print("Pop up text false");
+            }
+        }
     }
 
     private void FixedUpdate()
     {
         //Movement
         rb2d.MovePosition(rb2d.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    bool setPopUpText = false;
+    void popUpText()
+    {
+        playerPopUpText.gameObject.SetActive(true);
+        setPopUpText = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -128,7 +157,7 @@ public class playerController : MonoBehaviour
             }
             else
             {
-                print("Gems full");
+                popUpText();
             }
         }
 
