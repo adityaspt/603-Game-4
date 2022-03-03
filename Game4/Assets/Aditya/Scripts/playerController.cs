@@ -112,15 +112,21 @@ public class playerController : MonoBehaviour
             popUpTimeCounter +=Time.deltaTime;
             if (popUpTimeCounter >= popUpTextTime)
             {
-                popUpTimeCounter = 0;
-                setPopUpText = false;
-                playerPopUpText.gameObject.SetActive(false);
-                print("Pop up text false");
+                ClosePopUpText();
             }
         }
 
         
        
+    }
+
+
+    void ClosePopUpText()
+    {
+        popUpTimeCounter = 0;
+        setPopUpText = false;
+        playerPopUpText.gameObject.SetActive(false);
+        print("Pop up text false");
     }
 
     private void FixedUpdate()
@@ -132,6 +138,7 @@ public class playerController : MonoBehaviour
     bool setPopUpText = false;
     void popUpText()
     {
+        popUpTimeCounter = 0;
         playerPopUpText.gameObject.SetActive(true);
         setPopUpText = true;
     }
@@ -145,6 +152,10 @@ public class playerController : MonoBehaviour
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gold);
                 Destroy(collision.gameObject);
             }
+            else
+            {
+                popUpText();
+            }
         }
         if (collision.gameObject.CompareTag("Coal"))
         {
@@ -153,6 +164,10 @@ public class playerController : MonoBehaviour
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.coal);
                 Destroy(collision.gameObject);
             }
+            else
+            {
+                popUpText();
+            }
         }
         if (collision.gameObject.CompareTag("Metal"))
         {
@@ -160,6 +175,10 @@ public class playerController : MonoBehaviour
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.metal);
                 Destroy(collision.gameObject);
+            }
+            else
+            {
+                popUpText();
             }
         }
         if (collision.gameObject.CompareTag("Gems"))
