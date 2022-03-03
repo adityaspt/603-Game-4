@@ -39,7 +39,7 @@ public class bomb : MonoBehaviour
         }
         if (timer < -0.1f)
         {
-            Destroy(transform);
+            Destroy(gameObject);
         }
     }
 
