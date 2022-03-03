@@ -6,14 +6,34 @@ using System;
 
 public class Timer : MonoBehaviour
 {
-    public int upgradeNumber;
-    public float timeRemaining;
-    public float totalTime;
-    private bool active = false;
-    public Slider thisSlider;
-    public Text timeText;
+    
+    public float dspTimeRemaining;
+    public float dspTotalTime;
+    private bool dspActive = false;
+    public Slider dspSlider;
+    public Text dspTimeText;
+    public TimeSpan dspTS;
 
-    public TimeSpan ts;
+    public float dsiTimeRemaining;
+    public float dsiTotalTime;
+    private bool dsiActive = false;
+    public Slider dsiSlider;
+    public Text dsiTimeText;
+    public TimeSpan dsiTS;
+
+    public float bcTimeRemaining;
+    public float bcTotalTime;
+    private bool bcActive = false;
+    public Slider bcSlider;
+    public Text bcTimeText;
+    public TimeSpan bcTS;
+
+    public float bTimeRemaining;
+    public float bTotalTime;
+    private bool bActive = false;
+    public Slider bSlider;
+    public Text bTimeText;
+    public TimeSpan bTS;
 
     private ShopController shopController;
     
@@ -28,36 +48,129 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (active)
+        if (dspActive)
         {
-            timeRemaining -= Time.unscaledDeltaTime;
-            if(timeRemaining < 0)
+            dspTimeRemaining -= Time.unscaledDeltaTime;
+            if(dspTimeRemaining < 0)
             {
-                active = false;
-                shopController.UpgradeComplete();
+                dspActive = false;
+                shopController.DSPUpgradeComplete();
             }
         }
 
-        thisSlider.value = (totalTime - timeRemaining) / totalTime;
+        dspSlider.value = (dspTotalTime - dspTimeRemaining) / dspTotalTime;
 
-        ts = TimeSpan.FromSeconds(timeRemaining);
+        dspTS = TimeSpan.FromSeconds(dspTimeRemaining);
 
-        timeText.text = ts.ToString("hh':'mm':'ss");
+        dspTimeText.text = dspTS.ToString("hh':'mm':'ss");
+
+        if (dsiActive)
+        {
+            dsiTimeRemaining -= Time.unscaledDeltaTime;
+            if (dsiTimeRemaining < 0)
+            {
+                dsiActive = false;
+                shopController.DSIUpgradeComplete();
+            }
+        }
+
+        dsiSlider.value = (dsiTotalTime - dsiTimeRemaining) / dsiTotalTime;
+
+        dsiTS = TimeSpan.FromSeconds(dsiTimeRemaining);
+
+        dsiTimeText.text = dsiTS.ToString("hh':'mm':'ss");
+
+        if (bcActive)
+        {
+            bcTimeRemaining -= Time.unscaledDeltaTime;
+            if (bcTimeRemaining < 0)
+            {
+                bcActive = false;
+                shopController.BCUpgradeComplete();
+            }
+        }
+
+        bcSlider.value = (bcTotalTime - bcTimeRemaining) / bcTotalTime;
+
+        bcTS = TimeSpan.FromSeconds(bcTimeRemaining);
+
+        bcTimeText.text = bcTS.ToString("hh':'mm':'ss");
+
+        if (bActive)
+        {
+            bTimeRemaining -= Time.unscaledDeltaTime;
+            if (bTimeRemaining < 0)
+            {
+                bActive = false;
+                shopController.BUpgradeComplete();
+            }
+        }
+
+        bSlider.value = (bTotalTime - bTimeRemaining) / bTotalTime;
+
+        bTS = TimeSpan.FromSeconds(bTimeRemaining);
+
+        bTimeText.text = bTS.ToString("hh':'mm':'ss");
     }
 
-    public void StartTimer(float seconds)
+    public void DSPStartTimer(float seconds)
     {
-        totalTime = seconds;
-        timeRemaining = seconds;
-        active = true;
+        dspTotalTime = seconds;
+        dspTimeRemaining = seconds;
+        dspActive = true;
     }
 
-    public void Reset()
+    public void DSPReset()
     {
-        totalTime = 0f;
-        timeRemaining = 0f;
-        active = false;
+        dspTotalTime = 0f;
+        dspTimeRemaining = 0f;
+        dspActive = false;
     }
+
+    public void DSIStartTimer(float seconds)
+    {
+        dsiTotalTime = seconds;
+        dsiTimeRemaining = seconds;
+        dsiActive = true;
+    }
+
+    public void DSIReset()
+    {
+        dsiTotalTime = 0f;
+        dsiTimeRemaining = 0f;
+        dsiActive = false;
+    }
+
+    public void BCStartTimer(float seconds)
+    {
+        bcTotalTime = seconds;
+        bcTimeRemaining = seconds;
+        bcActive = true;
+    }
+
+    public void BCReset()
+    {
+        bcTotalTime = 0f;
+        bcTimeRemaining = 0f;
+        bcActive = false;
+    }
+
+    public void BStartTimer(float seconds)
+    {
+        bTotalTime = seconds;
+        bTimeRemaining = seconds;
+        bActive = true;
+    }
+
+    public void BReset()
+    {
+        bTotalTime = 0f;
+        bTimeRemaining = 0f;
+        bActive = false;
+    }
+
+
+
 
 
 
