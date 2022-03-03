@@ -6,7 +6,7 @@ using System;
 
 public class Timer : MonoBehaviour
 {
-    
+    public Upgrade dsp;
     public float dspTimeRemaining;
     public float dspTotalTime;
     private bool dspActive = false;
@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour
     public Text dspTimeText;
     public TimeSpan dspTS;
 
+    public Upgrade dsi;
     public float dsiTimeRemaining;
     public float dsiTotalTime;
     private bool dsiActive = false;
@@ -21,6 +22,7 @@ public class Timer : MonoBehaviour
     public Text dsiTimeText;
     public TimeSpan dsiTS;
 
+    public Upgrade bc;
     public float bcTimeRemaining;
     public float bcTotalTime;
     private bool bcActive = false;
@@ -28,6 +30,7 @@ public class Timer : MonoBehaviour
     public Text bcTimeText;
     public TimeSpan bcTS;
 
+    public Upgrade b;
     public float bTimeRemaining;
     public float bTotalTime;
     private bool bActive = false;
@@ -54,15 +57,15 @@ public class Timer : MonoBehaviour
             if(dspTimeRemaining < 0)
             {
                 dspActive = false;
-                shopController.DSPUpgradeComplete();
+                dsp.UpgradeComplete();
             }
         }
 
-        dspSlider.value = (dspTotalTime - dspTimeRemaining) / dspTotalTime;
+        dsp.slider.value = (dspTotalTime - dspTimeRemaining) / dspTotalTime;
 
         dspTS = TimeSpan.FromSeconds(dspTimeRemaining);
 
-        dspTimeText.text = dspTS.ToString("hh':'mm':'ss");
+        dsp.timeText.text = dspTS.ToString("hh':'mm':'ss");
 
         if (dsiActive)
         {
@@ -70,15 +73,15 @@ public class Timer : MonoBehaviour
             if (dsiTimeRemaining < 0)
             {
                 dsiActive = false;
-                shopController.DSIUpgradeComplete();
+                dsi.UpgradeComplete();
             }
         }
 
-        dsiSlider.value = (dsiTotalTime - dsiTimeRemaining) / dsiTotalTime;
+        dsi.slider.value = (dsiTotalTime - dsiTimeRemaining) / dsiTotalTime;
 
         dsiTS = TimeSpan.FromSeconds(dsiTimeRemaining);
 
-        dsiTimeText.text = dsiTS.ToString("hh':'mm':'ss");
+        dsi.timeText.text = dsiTS.ToString("hh':'mm':'ss");
 
         if (bcActive)
         {
@@ -86,15 +89,15 @@ public class Timer : MonoBehaviour
             if (bcTimeRemaining < 0)
             {
                 bcActive = false;
-                shopController.BCUpgradeComplete();
+                bc.UpgradeComplete();
             }
         }
 
-        bcSlider.value = (bcTotalTime - bcTimeRemaining) / bcTotalTime;
+        bc.slider.value = (bcTotalTime - bcTimeRemaining) / bcTotalTime;
 
         bcTS = TimeSpan.FromSeconds(bcTimeRemaining);
 
-        bcTimeText.text = bcTS.ToString("hh':'mm':'ss");
+        bc.timeText.text = bcTS.ToString("hh':'mm':'ss");
 
         if (bActive)
         {
@@ -102,15 +105,15 @@ public class Timer : MonoBehaviour
             if (bTimeRemaining < 0)
             {
                 bActive = false;
-                shopController.BUpgradeComplete();
+                b.UpgradeComplete();
             }
         }
 
-        bSlider.value = (bTotalTime - bTimeRemaining) / bTotalTime;
+        b.slider.value = (bTotalTime - bTimeRemaining) / bTotalTime;
 
         bTS = TimeSpan.FromSeconds(bTimeRemaining);
 
-        bTimeText.text = bTS.ToString("hh':'mm':'ss");
+        b.timeText.text = bTS.ToString("hh':'mm':'ss");
     }
 
     public void DSPStartTimer(float seconds)
