@@ -53,7 +53,7 @@ public class GoldPurchaseController : MonoBehaviour
 
     void AddGold(int gold)
     {
-        resourceManager.AddPremiumCurrency(gold);
+        resourceManager.goldAmountStorage +=(gold);
         confirmCanvas.gameObject.SetActive(false);
     }
 

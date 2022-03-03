@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour
 {
-    public GameObject pauseCanvas;
+    
     public GameObject upgradeCanvas;
     public GameObject itemCanvas;
     public GameObject goldCanvas;
@@ -15,24 +15,16 @@ public class ButtonHandler : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    public void ClosePauseCanvas()
-    {
-        pauseCanvas.gameObject.SetActive(false);
-        Time.timeScale = 1;
-    }
+   
 
-    public void OpenShop()
-    {
-        pauseCanvas.gameObject.SetActive(false);
-        upgradeCanvas.gameObject.SetActive(true);
-    }
+    
 
     public void ReturnToGame()
     {
         upgradeCanvas.gameObject.SetActive(false);
         itemCanvas.gameObject.SetActive(false);
         goldCanvas.gameObject.SetActive(false);
-        pauseCanvas.gameObject.SetActive(false);
+        
         Time.timeScale = 1;
     }
     

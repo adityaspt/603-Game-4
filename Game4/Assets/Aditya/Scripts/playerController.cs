@@ -41,6 +41,14 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private Dropbox dropBoxReference;
 
+    [Header("Shop")]
+    [SerializeField]
+    public bool isTouchingShop;
+    public GameObject shopCanvas;
+    public GameObject itemCanvas;
+    public GameObject goldCanvas;
+    public GameObject confirmCanvas;
+
     [Header("Script References")]
     [SerializeField]
     ResourceManager resourceManager;
@@ -110,6 +118,9 @@ public class playerController : MonoBehaviour
                 print("Pop up text false");
             }
         }
+
+        
+       
     }
 
     private void FixedUpdate()
@@ -171,6 +182,12 @@ public class playerController : MonoBehaviour
             dropBoxReference.ShowDropBoxCanvas();
         }
 
+        if (collision.gameObject.CompareTag("Shop"))
+        {
+            isTouchingShop = true;          
+        }
+        
+
 
     }
 
@@ -180,6 +197,30 @@ public class playerController : MonoBehaviour
         {
             isTouchingDropbox = false;
             dropBoxReference.HideDropBoxCanvas();
+        }
+
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Shop"))
+        {
+            Time.timeScale = 0;
+            shopCanvas.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Shop"))
+        {
+            shopCanvas.gameObject.SetActive(false);
+            itemCanvas.gameObject.SetActive(false);
+            goldCanvas.gameObject.SetActive(false);
+            confirmCanvas.gameObject.SetActive(false);
+            Time.timeScale = 1;
+            
         }
     }
 }

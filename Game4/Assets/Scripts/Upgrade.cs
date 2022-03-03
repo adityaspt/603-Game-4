@@ -15,6 +15,9 @@ public class Upgrade : MonoBehaviour
     public int requiredGold;
     public int requiredSpeedUp;
 
+    public Drill drill;
+    public playerController playerController;
+
     
     public Text firstUpgradeText;
     public Text secondUpgradeText;
@@ -58,9 +61,9 @@ public class Upgrade : MonoBehaviour
         switch (index)
         {
             case 0:
-                requiredCoal = 50;
-                requiredGem = 30;
-                requiredMetal = 20;
+                requiredCoal = 25;
+                requiredGem = 15;
+                requiredMetal = 10;
                 break;
             case 1:
                 requiredCoal = 100;
@@ -69,9 +72,9 @@ public class Upgrade : MonoBehaviour
                 requiredGold = 3;
                 break;
             case 2:
-                requiredCoal = 50;
-                requiredGem = 30;
-                requiredMetal = 20;
+                requiredCoal = 25;
+                requiredGem = 15;
+                requiredMetal = 10;
                 break;
             case 3:
                 requiredCoal = 100;
@@ -85,10 +88,10 @@ public class Upgrade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (resourceManager.coalAmount < requiredCoal ||
-            resourceManager.metalAmount < requiredMetal ||
-            resourceManager.gemAmount < requiredGem ||
-            resourceManager.goldAmount < requiredGold)
+        if (resourceManager.coalAmountStorage < requiredCoal ||
+            resourceManager.metalAmountStorage < requiredMetal ||
+            resourceManager.gemAmountStorage < requiredGem ||
+            resourceManager.goldAmountStorage < requiredGold)
         {
             upgradeButton.interactable = false;
             upgradeButtonText.text = "Not AvAilAble";
@@ -109,11 +112,11 @@ public class Upgrade : MonoBehaviour
         thirdImage.sprite = oreSprite;
         thirdImage.material = metalMat;
 
-        firstUpgradeText.text = resourceManager.coalAmount.ToString() + " / " + requiredCoal.ToString();
-        secondUpgradeText.text = resourceManager.gemAmount.ToString() + " / " + requiredGem.ToString();
-        thirdUpgradeText.text = resourceManager.metalAmount.ToString() + " / " + requiredMetal.ToString();
+        firstUpgradeText.text = resourceManager.coalAmountStorage.ToString() + " / " + requiredCoal.ToString();
+        secondUpgradeText.text = resourceManager.gemAmountStorage.ToString() + " / " + requiredGem.ToString();
+        thirdUpgradeText.text = resourceManager.metalAmountStorage.ToString() + " / " + requiredMetal.ToString();
 
-        if(resourceManager.coalAmount > requiredCoal)
+        if(resourceManager.coalAmountStorage > requiredCoal)
         {
             firstUpgradeText.color = green;
         }
@@ -122,7 +125,7 @@ public class Upgrade : MonoBehaviour
             firstUpgradeText.color = red;
         }
 
-        if (resourceManager.gemAmount > requiredGem)
+        if (resourceManager.gemAmountStorage > requiredGem)
         {
             secondUpgradeText.color = green;
         }
@@ -130,7 +133,7 @@ public class Upgrade : MonoBehaviour
         {
             secondUpgradeText.color = red;
         }
-        if (resourceManager.metalAmount > requiredMetal)
+        if (resourceManager.metalAmountStorage > requiredMetal)
         {
             thirdUpgradeText.color = green;
         }
@@ -138,7 +141,7 @@ public class Upgrade : MonoBehaviour
         {
             thirdUpgradeText.color = red;
         }
-        if (resourceManager.goldAmount > requiredGold)
+        if (resourceManager.goldAmountStorage > requiredGold)
         {
             fourthUpgradeText.color = green;
         }
@@ -156,13 +159,13 @@ public class Upgrade : MonoBehaviour
                     fourthImage.color = white;
                     fourthImage.sprite = oreSprite;
                     fourthImage.material = goldMat;
-                    fourthUpgradeText.text = resourceManager.goldAmount.ToString() + " / " + requiredGold.ToString();
+                    fourthUpgradeText.text = resourceManager.goldAmountStorage.ToString() + " / " + requiredGold.ToString();
                 }
                 break;
             case 1:
                 fourthImage.sprite = oreSprite;
                 fourthImage.material = goldMat;
-                fourthUpgradeText.text = resourceManager.goldAmount.ToString() + " / " + requiredGold.ToString();
+                fourthUpgradeText.text = resourceManager.goldAmountStorage.ToString() + " / " + requiredGold.ToString();
                 break;
             case 2:
 
@@ -171,13 +174,13 @@ public class Upgrade : MonoBehaviour
                     fourthImage.color = white;
                     fourthImage.sprite = oreSprite;
                     fourthImage.material = goldMat;
-                    fourthUpgradeText.text = resourceManager.goldAmount.ToString() + " / " + requiredGold.ToString();
+                    fourthUpgradeText.text = resourceManager.goldAmountStorage.ToString() + " / " + requiredGold.ToString();
                 }
                 break;
             case 3:
                 fourthImage.sprite = oreSprite;
                 fourthImage.material = goldMat;
-                fourthUpgradeText.text = resourceManager.goldAmount.ToString() + " / " + requiredGold.ToString();
+                fourthUpgradeText.text = resourceManager.goldAmountStorage.ToString() + " / " + requiredGold.ToString();
                 break;
 
 
@@ -188,10 +191,10 @@ public class Upgrade : MonoBehaviour
 
     public void UpgradeStart()
     {
-        resourceManager.coalAmount -= requiredCoal;
-        resourceManager.metalAmount -= requiredMetal;
-        resourceManager.gemAmount -= requiredGem;
-        resourceManager.goldAmount -= requiredGold;
+        resourceManager.coalAmountStorage -= requiredCoal;
+        resourceManager.metalAmountStorage -= requiredMetal;
+        resourceManager.gemAmountStorage -= requiredGem;
+        resourceManager.goldAmountStorage -= requiredGold;
 
         upgradeButton.gameObject.SetActive(false);
 
@@ -265,14 +268,34 @@ public class Upgrade : MonoBehaviour
         requiredMetal *= 2;
         requiredGold *= 2;
 
+        switch (index)
+        {
+            case 0:
+                drill.drillSpeed += 0.25f;
+                break;
+            case 1:
+                drill.UpSize();
+                break;
+            case 2:
+                resourceManager.goldBagCapacity *= 2;
+                resourceManager.coalBagCapacity *= 2;
+                resourceManager.gemBagCapacity *= 2;
+                resourceManager.metalBagCapacity *= 2;
+                break;
+            case 3:
+                playerController.bombRadius += 0.5f;
+                break;
+
+        }
+
     }
 
     public void SpeedUp()
     {
-        if (resourceManager.goldAmount >= requiredSpeedUp)
+        if (resourceManager.goldAmountStorage >= requiredSpeedUp)
         {
             UpgradeComplete();
-            resourceManager.goldAmount -= requiredSpeedUp;
+            resourceManager.goldAmountStorage -= requiredSpeedUp;
         }
         /*
         else

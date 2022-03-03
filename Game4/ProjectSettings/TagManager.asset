@@ -11,6 +11,7 @@ TagManager:
   - Gems
   - Drill
   - DropBox
+  - Shop
   layers:
   - Default
   - TransparentFX
