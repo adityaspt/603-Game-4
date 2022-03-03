@@ -17,6 +17,9 @@ public class LevelGenerator : MonoBehaviour
     public Vector2 currentCell;
     private Transform player;
 
+    [SerializeField]
+    float radiusOfCentreArea;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,10 +67,10 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-
+   
     void createWallAt(Vector2 pos)
     {
-        if (pos.sqrMagnitude > 3)
+        if (pos.sqrMagnitude > radiusOfCentreArea)
         {
             Wall wall = Instantiate(tile, pos, Quaternion.identity, transform).GetComponent<Wall>();
             Vector2 stardardGridCoords = start + pos * 0.2f;

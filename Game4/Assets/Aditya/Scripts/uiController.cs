@@ -27,16 +27,16 @@ public class uiController : MonoBehaviour
         switch(rtInt)
             {
             case 0: //coal
-                coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString();
+                coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.coalBagCapacity.ToString();
                     break;
             case 1: //metal
-                metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString();
+                metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.metalBagCapacity.ToString();
                 break;
             case 2: //gem
-                gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString();
+                gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.gemBagCapacity.ToString();
                 break;
             case 3: //gold
-                goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString();
+                goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.goldBagCapacity.ToString();
                 break;
         }
     }
@@ -73,10 +73,10 @@ public class uiController : MonoBehaviour
     public void UpdateAllPlayerResourcesUI()
     {
         //Update all the player Resources amount UI text
-        coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString();
-        metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString();
-        gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString();
-        goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString();
+        coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString()+"/"+ResourceManager.resourceManagerInstance.coalBagCapacity.ToString();
+        metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.metalBagCapacity.ToString();
+        gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.gemBagCapacity.ToString();
+        goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.goldBagCapacity.ToString();
     }
 
     // Update is called once per frame
