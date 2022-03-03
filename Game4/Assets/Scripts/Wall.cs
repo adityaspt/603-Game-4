@@ -49,7 +49,7 @@ public class Wall : MonoBehaviour
                 break;
             case 2: // coal
                 strength = 0.75f;
-                mat.SetColor("_Color", new Color(0.5094f, 0.3457f, 0.1994f)); // brown
+                mat.SetColor("_Color", new Color(0.245f, 0.245f, 0.245f)); // brown
                 main.startColor = new ParticleSystem.MinMaxGradient(new Color(0.5094f, 0.3457f, 0.1994f));
                 break;
             case 3: // Gold
