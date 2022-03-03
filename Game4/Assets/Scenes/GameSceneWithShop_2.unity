@@ -966,6 +966,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 139346352745391077, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseUpgrade
+      objectReference: {fileID: 0}
     - target: {fileID: 139346352959004016, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
       propertyPath: m_SizeDelta.y
       value: 12.2859
@@ -1082,6 +1086,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 5227029863849086633}
+    - target: {fileID: 139346353589395030, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseUpgrade
+      objectReference: {fileID: 0}
     - target: {fileID: 139346353819564966, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1109,6 +1117,22 @@ PrefabInstance:
     - target: {fileID: 139346353819564968, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -61.270714
+      objectReference: {fileID: 0}
+    - target: {fileID: 139346353916098158, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 139346354163145907, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 139346354163145907, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 139346354163145908, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139346354439941514, guid: a0dd5e5426bcbd548883f7ff740f6839, type: 3}
       propertyPath: drill
@@ -1512,7 +1536,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0426717, y: 1}
+    m_SensorSize: {x: 1.7766259, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
