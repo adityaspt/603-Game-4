@@ -1613,7 +1613,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0426717, y: 1}
+    m_SensorSize: {x: 1.6274217, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2016,6 +2016,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: gemAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: coalAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: goldAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: metalAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
       propertyPath: gemBagCapacity
       value: 20
       objectReference: {fileID: 0}
@@ -2028,8 +2044,24 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: gemAmountStorage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
       propertyPath: metalBagCapacity
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: coalAmountStorage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: goldAmountStorage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: metalAmountStorage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1195424054214345532, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
       propertyPath: gemText
