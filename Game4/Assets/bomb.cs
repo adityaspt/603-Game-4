@@ -28,6 +28,10 @@ public class bomb : MonoBehaviour
         {
             blaster.radius = radius;
         }
+        if (timer < -0.1f)
+        {
+            Destroy(transform);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
