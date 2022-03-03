@@ -5,6 +5,8 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
 
+
+    [Header("Player Variables")]
     [SerializeField]
     private float moveSpeed = 5f;
 
@@ -12,13 +14,26 @@ public class playerController : MonoBehaviour
 
     private Vector2 movement;
 
+    [Header("Pause UI")]
     public GameObject pauseCanvas;
 
     //public int bombs;
     //public int lights;
 
+    [Header("Prefab references")]
     public GameObject bombPrefab;
     public GameObject lightPrefab;
+
+    //dropbox
+    [Header("Dropbox/Storage variables")]
+    [SerializeField]
+    private bool isTouchingDropbox = false;
+    [SerializeField]
+    private Dropbox dropBoxReference;
+
+    [Header("Script References")]
+    [SerializeField]
+    ResourceManager resourceManager;
 
     private void Awake()
     {
@@ -28,14 +43,14 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //Input
-        movement.x=   Input.GetAxisRaw("Horizontal");
+        movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
@@ -64,6 +79,12 @@ public class playerController : MonoBehaviour
             ResourceManager.resourceManagerInstance.UseATorch();
             Instantiate(lightPrefab, transform.position, Quaternion.identity);
         }
+
+        if (isTouchingDropbox && Input.GetKeyDown(KeyCode.F))
+        {
+            dropBoxReference.TransferResourcesFromPlayerToStorage();
+            isTouchingDropbox = false;
+        }
     }
 
     private void FixedUpdate()
@@ -76,25 +97,57 @@ public class playerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gold"))
         {
-            ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gold);
-            Destroy(collision.gameObject);
+            if (resourceManager.goldAmount < resourceManager.goldBagCapacity)
+            {
+                ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gold);
+                Destroy(collision.gameObject);
+            }
         }
-        else if (collision.gameObject.CompareTag("Coal"))
+        if (collision.gameObject.CompareTag("Coal"))
         {
-            ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.coal);
-            Destroy(collision.gameObject);
+            if (resourceManager.coalAmount < resourceManager.coalBagCapacity)
+            {
+                ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.coal);
+                Destroy(collision.gameObject);
+            }
         }
-        else if (collision.gameObject.CompareTag("Metal"))
+        if (collision.gameObject.CompareTag("Metal"))
         {
-            ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.metal);
-            Destroy(collision.gameObject);
+            if (resourceManager.metalAmount < resourceManager.metalBagCapacity)
+            {
+                ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.metal);
+                Destroy(collision.gameObject);
+            }
         }
-        else if (collision.gameObject.CompareTag("Gems"))
+        if (collision.gameObject.CompareTag("Gems"))
         {
-            ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gem);
-            Destroy(collision.gameObject);
+            if (resourceManager.gemAmount < resourceManager.gemBagCapacity)
+            {
+                ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gem);
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                print("Gems full");
+            }
         }
-        
-       
+
+        if (collision.gameObject.CompareTag("DropBox"))
+        {
+            // dropBoxReference = collision.gameObject.GetComponent<Dropbox>();
+            isTouchingDropbox = true;
+            dropBoxReference.ShowDropBoxCanvas();
+        }
+
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("DropBox"))
+        {
+            isTouchingDropbox = false;
+            dropBoxReference.HideDropBoxCanvas();
+        }
     }
 }
