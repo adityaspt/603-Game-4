@@ -50,6 +50,17 @@ MonoBehaviour:
   coalAmount: 0
   metalAmount: 0
   gemAmount: 0
+  coalAmountStorage: 0
+  metalAmountStorage: 0
+  gemAmountStorage: 0
+  goldAmountStorage: 0
+  bombs: 3
+  torches: 3
+  totalBagCapacity: 8
+  goldBagCapacity: 2
+  coalBagCapacity: 2
+  metalBagCapacity: 2
+  gemBagCapacity: 2
 --- !u!114 &1195424054214345532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,3 +77,5 @@ MonoBehaviour:
   coalText: {fileID: 0}
   metalText: {fileID: 0}
   gemText: {fileID: 0}
+  bombsText: {fileID: 0}
+  torchesText: {fileID: 0}

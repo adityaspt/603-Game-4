@@ -63,13 +63,20 @@ public class uiController : MonoBehaviour
     void Start()
     {
         //Update all the text at start
+        UpdateAllPlayerResourcesUI();
+        //Update all the Item amount text
+        bombsText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.bombs.ToString();
+        torchesText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.torches.ToString();
+    }
+
+
+    public void UpdateAllPlayerResourcesUI()
+    {
+        //Update all the player Resources amount UI text
         coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString();
         metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString();
         gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString();
         goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString();
-
-        bombsText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.bombs.ToString();
-        torchesText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.torches.ToString();
     }
 
     // Update is called once per frame

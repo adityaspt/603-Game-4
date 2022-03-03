@@ -6,13 +6,16 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager resourceManagerInstance;
-
+    [Header("Player Resources amounts")]
     public int goldAmount;
 
     public int premiumCurrencyAmount;
 
     //Resources
     public int coalAmount = 0, metalAmount = 0, gemAmount = 0;
+
+    [Header("Storage Resources amounts")]
+    public int coalAmountStorage = 0, metalAmountStorage = 0, gemAmountStorage=0, goldAmountStorage=0;
 
     public enum ResourceType
     {
@@ -22,7 +25,7 @@ public class ResourceManager : MonoBehaviour
 
     public event EventHandler<eventTriggerSet.resourceEventTrigger> onResourceAmountChanged;
 
-
+    [Header("Player Items amounts")]
     //Items
     public int bombs = 0, torches = 0;
 
@@ -35,6 +38,10 @@ public class ResourceManager : MonoBehaviour
     public event EventHandler<eventTriggerSet.itemEventTrigger> onItemAmountChanged;
 
 
+    [Header("Bag capacity stuff")]
+    public int totalBagCapacity = 8;
+
+    public int goldBagCapacity, coalBagCapacity, metalBagCapacity, gemBagCapacity;
 
     private void Awake()
     {
@@ -117,6 +124,7 @@ public class ResourceManager : MonoBehaviour
         }
         onItemAmountChanged?.Invoke(this, new eventTriggerSet.itemEventTrigger { itemType = iT });
     }
+    //
 
     //For Zach to use in Shop for item purchase
     public int GetBombAmount()
