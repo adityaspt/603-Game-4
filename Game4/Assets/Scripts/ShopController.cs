@@ -10,17 +10,47 @@ public class ShopController : MonoBehaviour
 
     private ResourceManager resourceManager;
 
-    public Upgrade upgrade1;
+    public Upgrade drillSpeedUpgrade;
+    public TieredUpgrade drillSizeUpgrade;
+    public Upgrade bagCapacityUpgrade;
+    public TieredUpgrade bombUpgrade;
 
-    public Image upgradeBar1;
-
+    /*
+    public Image drillSizeUpgradeBar;
+    public Image bombUpgradeBar;
+    */
     
-    public Button button1;
-    public Text buttonText1;
-    public GameObject progressSlider1;
-    public Timer progressTimer1;
-    public GameObject upgradeCompleteButton;
-    public GameObject speedUpButton;
+    public Button dspUpgradeButton;
+    public Button dsiUpgradeButton;
+    public Button bcUpgradeButton;
+    public Button bUpgradeButton;
+
+
+    public Text dspUpgradeButtonText;
+    public Text dsiUpgradeButtonText;
+    public Text bcUpgradeButtonText;
+    public Text bUpgradeButtonText;
+
+
+    public GameObject dspProgressSlider;
+    public GameObject dsiProgressSlider;
+    public GameObject bcProgressSlider;
+    public GameObject bProgressSlider;
+
+
+    public Timer timer;
+    
+
+    public GameObject dspUpgradeCompleteButton;
+    public GameObject dsiUpgradeCompleteButton;
+    public GameObject bcUpgradeCompleteButton;
+    public GameObject bUpgradeCompleteButton;
+
+    public GameObject dspSpeedUpButton;
+    public GameObject dsiSpeedUpButton;
+    public GameObject bcSpeedUpButton;
+    public GameObject bSpeedUpButton;
+
     public GameObject GoldPurchaseCanvas;
     public GameObject ItemPurchaseCanvas;
     public GameObject UpgradeCanvas;
@@ -30,50 +60,103 @@ public class ShopController : MonoBehaviour
     void Start()
     {
         resourceManager = FindObjectOfType<ResourceManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(resourceManager.GetGoldAmount() < upgrade1.cost)
+        if(resourceManager.coalAmount < drillSpeedUpgrade.requiredCoal ||
+            resourceManager.metalAmount < drillSpeedUpgrade.requiredMetal ||
+            resourceManager.gemAmount < drillSpeedUpgrade.requiredGem ||
+            resourceManager.goldAmount < drillSpeedUpgrade.requiredGold)
         {
-            button1.interactable = false;
-            buttonText1.text = "Not AvAilAble";
+            dspUpgradeButton.interactable = false;
+            dspUpgradeButtonText.text = "Not AvAilAble";
         }
 
         else
         {
-            button1.interactable = true;
-            buttonText1.text = "Buy UpgrAde";
-            
+            dspUpgradeButton.interactable = true;
+            dspUpgradeButtonText.text = "Buy UpgrAde";           
         }
+
+        if (resourceManager.coalAmount < drillSizeUpgrade.requiredCoal ||
+            resourceManager.metalAmount < drillSizeUpgrade.requiredMetal ||
+            resourceManager.gemAmount < drillSizeUpgrade.requiredGem ||
+            resourceManager.goldAmount < drillSizeUpgrade.requiredGold)
+        {
+            dsiUpgradeButton.interactable = false;
+            dsiUpgradeButtonText.text = "Not AvAilAble";
+        }
+
+        else
+        {
+            dsiUpgradeButton.interactable = true;
+            dsiUpgradeButtonText.text = "Buy UpgrAde";
+        }
+
+        if (resourceManager.coalAmount < bagCapacityUpgrade.requiredCoal ||
+            resourceManager.metalAmount < bagCapacityUpgrade.requiredMetal ||
+            resourceManager.gemAmount < bagCapacityUpgrade.requiredGem ||
+            resourceManager.goldAmount < bagCapacityUpgrade.requiredGold)
+        {
+            bcUpgradeButton.interactable = false;
+            bcUpgradeButtonText.text = "Not AvAilAble";
+        }
+
+        else
+        {
+            bcUpgradeButton.interactable = true;
+            bcUpgradeButtonText.text = "Buy UpgrAde";
+        }
+
+        if (resourceManager.coalAmount < bombUpgrade.requiredCoal ||
+            resourceManager.metalAmount < bombUpgrade.requiredMetal ||
+            resourceManager.gemAmount < bombUpgrade.requiredGem ||
+            resourceManager.goldAmount < bombUpgrade.requiredGold)
+        {
+            bUpgradeButton.interactable = false;
+            bUpgradeButtonText.text = "Not AvAilAble";
+        }
+
+        else
+        {
+            bUpgradeButton.interactable = true;
+            bUpgradeButtonText.text = "Buy UpgrAde";
+        }
+
+
     }
 
-    public void UpgradeStart()
+    public void DSPUpgradeStart()
     {
-        resourceManager.RemoveGold(upgrade1.cost);
-        button1.gameObject.SetActive(false);
+        resourceManager.coalAmount -= drillSpeedUpgrade.requiredCoal;
+        resourceManager.metalAmount -= drillSpeedUpgrade.requiredMetal;
+        resourceManager.gemAmount -= drillSpeedUpgrade.requiredGem;
+        resourceManager.goldAmount -= drillSpeedUpgrade.requiredGold;
+
+        dspUpgradeButton.gameObject.SetActive(false);
         
-        progressSlider1.gameObject.SetActive(true);
-        speedUpButton.gameObject.SetActive(true);
+        dspProgressSlider.gameObject.SetActive(true);
+        dspSpeedUpButton.gameObject.SetActive(true);
 
 
-        progressTimer1.StartTimer(30f);
-        
-        
+        timer.DSPStartTimer(30f);
+               
     }
 
-    public void UpgradeComplete()
+    public void DSPUpgradeComplete()
     {
-        upgradeCompleteButton.SetActive(true);
-        progressSlider1.gameObject.SetActive(false);
-        speedUpButton.gameObject.SetActive(false);
-        progressTimer1.Reset();
+        dspUpgradeCompleteButton.SetActive(true);
+        dspProgressSlider.gameObject.SetActive(false);
+        dspSpeedUpButton.gameObject.SetActive(false);
+        timer.DSPReset();
     }
 
-    public void PurchaseUpgrade()
+    public void DSPPurchaseUpgrade()
     {
-        
+        /*
         for (int i = 0; i < upgradeProgressSprites.Count; i++)
         {
             if(upgradeBar1.sprite == upgradeProgressSprites[i])
@@ -82,18 +165,18 @@ public class ShopController : MonoBehaviour
                 break;
             }
         }
-
-        upgradeCompleteButton.SetActive(false);
-        button1.gameObject.SetActive(true);
+        */
+        dspUpgradeCompleteButton.SetActive(false);
+        dspUpgradeButton.gameObject.SetActive(true);
 
     }
 
-    public void SpeedUp()
+    public void DSPSpeedUp()
     {
-        if(resourceManager.GetPremiumCurrencyAmount() >= 2)
+        if(resourceManager.goldAmount >= drillSpeedUpgrade.requiredSpeedUp)
         {
-            UpgradeComplete();
-            resourceManager.RemovePremiumCurrency(2);
+            DSPUpgradeComplete();
+            resourceManager.goldAmount -= drillSpeedUpgrade.requiredSpeedUp;
         }
 
         else
@@ -101,8 +184,179 @@ public class ShopController : MonoBehaviour
 
             GoldPurchaseCanvas.gameObject.SetActive(true);
         }
+    }
+
+    public void DSIUpgradeStart()
+    {
+        resourceManager.coalAmount -= drillSizeUpgrade.requiredCoal;
+        resourceManager.metalAmount -= drillSizeUpgrade.requiredMetal;
+        resourceManager.gemAmount -= drillSizeUpgrade.requiredGem;
+        resourceManager.goldAmount -= drillSizeUpgrade.requiredGold;
+
+        dsiUpgradeButton.gameObject.SetActive(false);
+
+        dsiProgressSlider.gameObject.SetActive(true);
+        dsiSpeedUpButton.gameObject.SetActive(true);
 
 
+        timer.DSIStartTimer(30f);
+
+    }
+
+    public void DSIUpgradeComplete()
+    {
+        drillSizeUpgrade.IncreaseLevel();
+        dsiUpgradeCompleteButton.SetActive(true);
+        dsiProgressSlider.gameObject.SetActive(false);
+        dsiSpeedUpButton.gameObject.SetActive(false);
+        timer.DSIReset();
+    }
+
+    public void DSIPurchaseUpgrade()
+    {
+        /*
+        for (int i = 0; i < upgradeProgressSprites.Count; i++)
+        {
+            if(upgradeBar1.sprite == upgradeProgressSprites[i])
+            {
+                upgradeBar1.sprite = upgradeProgressSprites[i + 1];
+                break;
+            }
+        }
+        */
+        dsiUpgradeCompleteButton.SetActive(false);
+        dsiUpgradeButton.gameObject.SetActive(true);
+
+    }
+
+    public void DSISpeedUp()
+    {
+        if (resourceManager.goldAmount >= drillSizeUpgrade.requiredSpeedUp)
+        {
+            DSIUpgradeComplete();
+            resourceManager.goldAmount -= drillSizeUpgrade.requiredSpeedUp;
+        }
+
+        else
+        {
+
+            GoldPurchaseCanvas.gameObject.SetActive(true);
+        }
+    }
+
+    public void BCUpgradeStart()
+    {
+        resourceManager.coalAmount -= bagCapacityUpgrade.requiredCoal;
+        resourceManager.metalAmount -= bagCapacityUpgrade.requiredMetal;
+        resourceManager.gemAmount -= bagCapacityUpgrade.requiredGem;
+        resourceManager.goldAmount -= bagCapacityUpgrade.requiredGold;
+
+        bcUpgradeButton.gameObject.SetActive(false);
+
+        bcProgressSlider.gameObject.SetActive(true);
+        bcSpeedUpButton.gameObject.SetActive(true);
+
+
+        timer.BCStartTimer(30f);
+
+    }
+
+    public void BCUpgradeComplete()
+    {
+        bcUpgradeCompleteButton.SetActive(true);
+        bcProgressSlider.gameObject.SetActive(false);
+        bcSpeedUpButton.gameObject.SetActive(false);
+        timer.BCReset();
+    }
+
+    public void BCPurchaseUpgrade()
+    {
+        /*
+        for (int i = 0; i < upgradeProgressSprites.Count; i++)
+        {
+            if(upgradeBar1.sprite == upgradeProgressSprites[i])
+            {
+                upgradeBar1.sprite = upgradeProgressSprites[i + 1];
+                break;
+            }
+        }
+        */
+        bcUpgradeCompleteButton.SetActive(false);
+        bcUpgradeButton.gameObject.SetActive(true);
+
+    }
+
+    public void BCSpeedUp()
+    {
+        if (resourceManager.goldAmount >= bagCapacityUpgrade.requiredSpeedUp)
+        {
+            BCUpgradeComplete();
+            resourceManager.goldAmount -= bagCapacityUpgrade.requiredSpeedUp;
+        }
+
+        else
+        {
+
+            GoldPurchaseCanvas.gameObject.SetActive(true);
+        }
+    }
+
+    public void BUpgradeStart()
+    {
+        resourceManager.coalAmount -= bombUpgrade.requiredCoal;
+        resourceManager.metalAmount -= bombUpgrade.requiredMetal;
+        resourceManager.gemAmount -= bombUpgrade.requiredGem;
+        resourceManager.goldAmount -= bombUpgrade.requiredGold;
+
+        bUpgradeButton.gameObject.SetActive(false);
+
+        bProgressSlider.gameObject.SetActive(true);
+        bSpeedUpButton.gameObject.SetActive(true);
+
+
+        timer.BStartTimer(30f);
+
+    }
+
+    public void BUpgradeComplete()
+    {
+        bombUpgrade.IncreaseLevel();
+        bUpgradeCompleteButton.SetActive(true);
+        bProgressSlider.gameObject.SetActive(false);
+        bSpeedUpButton.gameObject.SetActive(false);
+        timer.BReset();
+    }
+
+    public void BPurchaseUpgrade()
+    {
+        /*
+        for (int i = 0; i < upgradeProgressSprites.Count; i++)
+        {
+            if(upgradeBar1.sprite == upgradeProgressSprites[i])
+            {
+                upgradeBar1.sprite = upgradeProgressSprites[i + 1];
+                break;
+            }
+        }
+        */
+        bUpgradeCompleteButton.SetActive(false);
+        bUpgradeButton.gameObject.SetActive(true);
+
+    }
+
+    public void BSpeedUp()
+    {
+        if (resourceManager.goldAmount >= bombUpgrade.requiredSpeedUp)
+        {
+            BUpgradeComplete();
+            resourceManager.goldAmount -= bombUpgrade.requiredSpeedUp;
+        }
+
+        else
+        {
+
+            GoldPurchaseCanvas.gameObject.SetActive(true);
+        }
     }
 
     public void UpgradeTab()
