@@ -42,6 +42,9 @@ public class ResourceManager : MonoBehaviour
     [Header("Bag capacity stuff")]
     public int goldBagCapacity, coalBagCapacity, metalBagCapacity, gemBagCapacity;
 
+    [Header("Done Object")]
+    public GameObject doneObject;
+    public int doneInt;
     private void Awake()
     {
         resourceManagerInstance = this;
@@ -73,6 +76,15 @@ public class ResourceManager : MonoBehaviour
         //{
         //    AddResourceAmount(ResourceType.coal);
         //}
+
+        if(doneInt > 0)
+        {
+            doneObject.gameObject.SetActive(true);
+        }
+        else
+        {
+            doneObject.gameObject.SetActive(false);
+        }
     }
 
     //Add Resources

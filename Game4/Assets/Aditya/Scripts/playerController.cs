@@ -49,6 +49,10 @@ public class playerController : MonoBehaviour
     public GameObject goldCanvas;
     public GameObject confirmCanvas;
 
+    [Header("Compass")]
+    public GameObject compass;
+    public bool compassActive;
+
     [Header("Script References")]
     [SerializeField]
     ResourceManager resourceManager;
@@ -63,7 +67,7 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -86,6 +90,21 @@ public class playerController : MonoBehaviour
             Time.timeScale = 0;
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (compassActive)
+            {
+                compassActive = false;
+                compass.gameObject.SetActive(false);
+            }
+            else
+            {
+                compassActive = true;
+                compass.gameObject.SetActive(true);
+            }
+
+        }
+
         // Bomb key
         if (Input.GetKeyDown(KeyCode.Q) && ResourceManager.resourceManagerInstance.bombs > 0)
         {
@@ -105,6 +124,12 @@ public class playerController : MonoBehaviour
         {
             dropBoxReference.TransferResourcesFromPlayerToStorage();
             isTouchingDropbox = false;
+        }
+
+        if (isTouchingShop && Input.GetKeyDown(KeyCode.F))
+        {
+            Time.timeScale = 0;
+            shopCanvas.gameObject.SetActive(true);
         }
 
         if (setPopUpText)
@@ -202,17 +227,13 @@ public class playerController : MonoBehaviour
             dropBoxReference.animator.SetBool("IsOpen", isTouchingDropbox);
         }
 
-        if (collision.gameObject.CompareTag("Shop"))
-        {
-            isTouchingShop = true;          
-        }
-        
-
 
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+
+        
         if (collision.gameObject.CompareTag("DropBox"))
         {
             isTouchingDropbox = false;
@@ -225,23 +246,22 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Shop"))
         {
-            Time.timeScale = 0;
-            shopCanvas.gameObject.SetActive(true);
+            isTouchingShop = true;
         }
+        
+ 
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Shop"))
         {
-            shopCanvas.gameObject.SetActive(false);
-            itemCanvas.gameObject.SetActive(false);
-            goldCanvas.gameObject.SetActive(false);
-            confirmCanvas.gameObject.SetActive(false);
-            Time.timeScale = 1;
-            
+            isTouchingShop = false;
         }
+
     }
 }

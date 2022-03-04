@@ -100,7 +100,7 @@ public class Upgrade : MonoBehaviour
         else
         {
             upgradeButton.interactable = true;
-            upgradeButtonText.text = "Buy UpgrAde";
+            upgradeButtonText.text = "StArt UpgrAde";
         }
 
         speedUpText.text = "Speed Up \n" + requiredSpeedUp;
@@ -225,6 +225,7 @@ public class Upgrade : MonoBehaviour
 
     public void UpgradeComplete()
     {
+        resourceManager.doneInt++;
         upgradeCompleteButton.SetActive(true);
         progressSlider.gameObject.SetActive(false);
         speedUpButton.gameObject.SetActive(false);
@@ -259,6 +260,7 @@ public class Upgrade : MonoBehaviour
             }
         }
         */
+        resourceManager.doneInt--;
         upgradeCompleteButton.SetActive(false);
         upgradeButton.gameObject.SetActive(true);
         level++;

@@ -9,7 +9,8 @@ public class ButtonHandler : MonoBehaviour
     public GameObject upgradeCanvas;
     public GameObject itemCanvas;
     public GameObject goldCanvas;
-
+    public GameObject instructionCanvas;
+    public GameObject menuCanvas;
 
     public void PlayGame()
     {
@@ -29,6 +30,19 @@ public class ButtonHandler : MonoBehaviour
         goldCanvas.gameObject.SetActive(false);
         
         Time.timeScale = 1;
+    }
+
+    public void CloseInstructionCanvas()
+    {
+        instructionCanvas.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void OpenInstructionCanvas()
+    {
+        menuCanvas.gameObject.SetActive(false);
+        instructionCanvas.gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
     
 }
