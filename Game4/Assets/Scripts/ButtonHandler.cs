@@ -17,7 +17,10 @@ public class ButtonHandler : MonoBehaviour
     }
    
 
-    
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 
     public void ReturnToGame()
     {

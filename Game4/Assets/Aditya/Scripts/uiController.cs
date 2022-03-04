@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class uiController : MonoBehaviour
 {
     public static uiController uiControllerInstance;
+
+    //Pause menu
+    [SerializeField]
+    GameObject PauseCanvas, resourceUIParent;
 
     //resource objects
     [SerializeField]
@@ -79,9 +84,28 @@ public class uiController : MonoBehaviour
         goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.goldBagCapacity.ToString();
     }
 
+
+    public void ResumeGame()
+    {
+        resourceUIParent.SetActive(true);
+        PauseCanvas.SetActive(false);
+      
+        Time.timeScale = 1;
+    }
+
+    public void ExitGameScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape) && !PauseCanvas.activeSelf)
+        {
+            resourceUIParent.SetActive(false);
+            PauseCanvas.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }
