@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_OreDrop_Metal
-  m_Shader: {fileID: -6465566751694194690, guid: ebd70bbf20e5d2d4b8c8dbb3cc4c1aa3, type: 3}
+  m_Name: M_Shop
+  m_Shader: {fileID: -6465566751694194690, guid: 264185cdd636a5343aa456b5a0b249b5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,12 +19,24 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ColorMap:
-        m_Texture: {fileID: 2800000, guid: bd0c480a25aed6944a7eea1a76fb0c53, type: 3}
+        m_Texture: {fileID: 2800000, guid: 98938601cbcc5ca42908f81017471e6a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9efabb32f5ebb5940abdc69d4386145e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 801e3aa5df9adae468be2068dbc8a1ac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -40,7 +52,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _EnableExternalAlpha: 0
+    - _Intensity: 2
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.039973736, a: 1}
+    - _Color: {r: 0.9098039, g: 0.95686275, b: 0.17254902, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

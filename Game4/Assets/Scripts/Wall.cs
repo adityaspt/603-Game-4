@@ -66,8 +66,8 @@ public class Wall : MonoBehaviour
                 break;
             case 5: // metal
                 strength = 2.0f;
-                mat.SetColor("_Color", new Color(0.7835f, 0.7835f, 0.7835f)); // light grey
-                main.startColor = new ParticleSystem.MinMaxGradient(new Color(0.7835f, 0.7835f, 0.7835f));
+                mat.SetColor("_Color", new Color(1f, 0f, 0.03997374f)); // red
+                main.startColor = new ParticleSystem.MinMaxGradient(new Color(1f, 0f, 0.03997374f));
                 break;
             case 6: // Gem
                 strength = 3.0f;

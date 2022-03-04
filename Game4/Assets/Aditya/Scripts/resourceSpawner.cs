@@ -69,7 +69,7 @@ public class resourceSpawner : MonoBehaviour
             case 5: // metal
                     //Set tags
                 tempRes.tag = "Metal";
-                mat.SetColor("_Color", new Color(0f, 0.1037736f * powMax, 0.01831298f * powMax)); // dark green
+                mat.SetColor("_Color", new Color(1f * powMax, 0f, 0.03997374f * powMax)); // dark red
                 break;
             case 6: // Gem
                 //Set tags
