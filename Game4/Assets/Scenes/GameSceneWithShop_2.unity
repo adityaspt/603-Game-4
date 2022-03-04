@@ -1197,7 +1197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 83.082596}
+  m_AnchoredPosition: {x: 250, y: 92.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &324922145
@@ -1239,11 +1239,14 @@ MonoBehaviour:
     DEPOSIT MATERIALS - F
 
 
-    OPEN COMPASS - C
+    OPEN Shop - F
 
 
-    oPEN
-    MENU - Esc
+    OPEN
+    COMPASS - C
+
+
+    oPEN MENU - Esc
 
 
 '
@@ -1949,7 +1952,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7763222, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5646,6 +5649,7 @@ GameObject:
   - component: {fileID: 2085105036}
   - component: {fileID: 2085105039}
   - component: {fileID: 2085105040}
+  - component: {fileID: 2085105041}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5680,15 +5684,15 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.03786008
     y: 0
-    width: 1
+    width: 0.9247371
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.21875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5786,6 +5790,29 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2085105041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085105035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_AssetsPPU: 128
+  m_RefResolutionX: 1920
+  m_RefResolutionY: 1080
+  m_CropFrame: 4
+  m_GridSnapping: 1
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1001 &1740452139391184124
 PrefabInstance:
   m_ObjectHideFlags: 0
