@@ -106,7 +106,7 @@ public class Wall : MonoBehaviour
         if (type == 2 || type == 3 || type == 5 || type == 6)
         {
             //Code to Spawn the resources on map to be collected by then player
-            resourceSpawner.resourceSpawnerInstance.CreateResource(this.transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)),this.type);
+            resourceSpawner.resourceSpawnerInstance.CreateResource(this.transform.position + new Vector3(0, 0, 0.5f), Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)),this.type);
           //  print("Resource created; type " + this.type);
         }
     }

@@ -9959,7 +9959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2
-  radius: 4
+  radius: 7
   explosionVFX: {fileID: 4523225196119061481}
 --- !u!58 &2156231926316502278
 CircleCollider2D:

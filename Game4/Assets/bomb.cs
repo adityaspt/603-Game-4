@@ -20,7 +20,7 @@ public class bomb : MonoBehaviour
         animator = GetComponent<Animator>();
         counter = 0;
 
-        radius = 4;
+        //radius = 4;
 
         explosionVFX.SetActive(false);
 

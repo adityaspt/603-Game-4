@@ -170,6 +170,21 @@ public class playerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        if (collision.gameObject.CompareTag("DropBox"))
+        {
+            // dropBoxReference = collision.gameObject.GetComponent<Dropbox>();
+            isTouchingDropbox = true;
+            dropBoxReference.ShowDropBoxCanvas();
+            dropBoxReference.animator.SetBool("IsOpen", isTouchingDropbox);
+        }
+
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
         if (collision.gameObject.CompareTag("Gold"))
         {
             if (resourceManager.goldAmount < resourceManager.goldBagCapacity)
@@ -218,16 +233,6 @@ public class playerController : MonoBehaviour
                 popUpText();
             }
         }
-
-        if (collision.gameObject.CompareTag("DropBox"))
-        {
-            // dropBoxReference = collision.gameObject.GetComponent<Dropbox>();
-            isTouchingDropbox = true;
-            dropBoxReference.ShowDropBoxCanvas();
-            dropBoxReference.animator.SetBool("IsOpen", isTouchingDropbox);
-        }
-
-
     }
 
     private void OnCollisionExit2D(Collision2D collision)
