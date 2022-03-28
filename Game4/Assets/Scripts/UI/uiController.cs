@@ -67,6 +67,7 @@ public class uiController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //SoundManager.PlayBackgroundMusic();
         //Update all the text at start
         UpdateAllPlayerResourcesUI();
         //Update all the Item amount text
@@ -87,6 +88,7 @@ public class uiController : MonoBehaviour
 
     public void ResumeGame()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         resourceUIParent.SetActive(true);
         PauseCanvas.SetActive(false);
       
@@ -95,6 +97,7 @@ public class uiController : MonoBehaviour
 
     public void ExitGameScene()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         SceneManager.LoadScene(0);
     }
 
@@ -103,9 +106,16 @@ public class uiController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !PauseCanvas.activeSelf)
         {
+            SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
             resourceUIParent.SetActive(false);
             PauseCanvas.SetActive(true);
             Time.timeScale = 0;
         }
     }
+
+    public void PlayClickSFX()
+    {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
+    }
+
 }

@@ -45,6 +45,10 @@ public class ResourceManager : MonoBehaviour
     [Header("Done Object")]
     public GameObject doneObject;
     public int doneInt;
+
+    bool isUpgradeUp = false;
+
+
     private void Awake()
     {
         resourceManagerInstance = this;
@@ -79,13 +83,20 @@ public class ResourceManager : MonoBehaviour
 
         if(doneInt > 0)
         {
+            if (!isUpgradeUp)
+                SoundManager.PlaySound(SoundManager.Sounds.upgradeReadySFX);
+           
             doneObject.gameObject.SetActive(true);
+            isUpgradeUp = true;
         }
         else
         {
             doneObject.gameObject.SetActive(false);
+            isUpgradeUp = false;
         }
     }
+
+    
 
     //Add Resources
     public void AddResourceAmount(ResourceType rt)

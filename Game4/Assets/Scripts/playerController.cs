@@ -123,6 +123,7 @@ public class playerController : MonoBehaviour
         if (isTouchingDropbox && Input.GetKeyDown(KeyCode.F))
         {
             dropBoxReference.TransferResourcesFromPlayerToStorage();
+            SoundManager.PlaySound(SoundManager.Sounds.resourceDropSFX);
             isTouchingDropbox = false;
         }
 
@@ -190,6 +191,7 @@ public class playerController : MonoBehaviour
             if (resourceManager.goldAmount < resourceManager.goldBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gold);
+                SoundManager.PlaySound(SoundManager.Sounds.resourceCollectSFX);
                 Destroy(collision.gameObject);
             }
             else
@@ -202,6 +204,7 @@ public class playerController : MonoBehaviour
             if (resourceManager.coalAmount < resourceManager.coalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.coal);
+                SoundManager.PlaySound(SoundManager.Sounds.resourceCollectSFX);
                 Destroy(collision.gameObject);
             }
             else
@@ -214,6 +217,7 @@ public class playerController : MonoBehaviour
             if (resourceManager.metalAmount < resourceManager.metalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.metal);
+                SoundManager.PlaySound(SoundManager.Sounds.resourceCollectSFX);
                 Destroy(collision.gameObject);
             }
             else
@@ -226,6 +230,7 @@ public class playerController : MonoBehaviour
             if (resourceManager.gemAmount < resourceManager.gemBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gem);
+                SoundManager.PlaySound(SoundManager.Sounds.resourceCollectSFX);
                 Destroy(collision.gameObject);
             }
             else

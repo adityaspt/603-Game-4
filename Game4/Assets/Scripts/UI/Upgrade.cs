@@ -218,7 +218,7 @@ public class Upgrade : MonoBehaviour
                 break;
 
         }
-
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
        
 
     }
@@ -289,7 +289,7 @@ public class Upgrade : MonoBehaviour
                 break;
 
         }
-
+        SoundManager.PlaySound(SoundManager.Sounds.upgradeBuySFX);
     }
 
     public void SpeedUp()

@@ -60,6 +60,7 @@ public class ShopController : MonoBehaviour
 
     public void UpgradeTab()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         GoldPurchaseCanvas.gameObject.SetActive(false);
         ItemPurchaseCanvas.gameObject.SetActive(false);
         UpgradeCanvas.gameObject.SetActive(true);
@@ -67,6 +68,7 @@ public class ShopController : MonoBehaviour
 
     public void ItemTab()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         GoldPurchaseCanvas.gameObject.SetActive(false);
         ItemPurchaseCanvas.gameObject.SetActive(true);
         UpgradeCanvas.gameObject.SetActive(false);
@@ -74,6 +76,7 @@ public class ShopController : MonoBehaviour
 
     public void GoldTab()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         GoldPurchaseCanvas.gameObject.SetActive(true);
         ItemPurchaseCanvas.gameObject.SetActive(false);
         UpgradeCanvas.gameObject.SetActive(false);
@@ -81,24 +84,28 @@ public class ShopController : MonoBehaviour
 
     public void BuyOneBomb()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         resourceManager.coalAmountStorage -= 10;
         resourceManager.AddBomb(1);
     }
 
     public void BuyOneTorch()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         resourceManager.coalAmountStorage -= 10;
         resourceManager.AddTorch(1);
     }
 
     public void BuyFiveBomb()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         resourceManager.coalAmountStorage -= 50;
         resourceManager.AddBomb(5);
     }
 
     public void BuyFiveTorch()
     {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         resourceManager.coalAmountStorage -= 50;
         resourceManager.AddTorch(5);
     }
