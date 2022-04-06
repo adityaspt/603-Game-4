@@ -50,4 +50,9 @@ public class ButtonHandler : MonoBehaviour
         Time.timeScale = 0;
     }
     
+    public void OptionsButtonStartScene()
+    {
+        SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
+    }
+
 }
