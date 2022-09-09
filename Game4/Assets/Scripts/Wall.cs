@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,12 +17,58 @@ public class Wall : MonoBehaviour
     [SerializeField]
     private ResourceManager.ResourceType resourceType;
 
-
+    bool broken = false;
 
     // Start is called before the first frame update
     void Start()
     {
         wallVFX.gameObject.SetActive(false);
+
+        // set the type for this block
+        Vector2 stardardGridCoords = LevelGenerator.start + (Vector2)transform.position * 0.2f;
+        float noiseVal = Mathf.PerlinNoise(stardardGridCoords.x, stardardGridCoords.y);
+        Vector2 GemCoords = stardardGridCoords * 5;
+        float gemNoise = Mathf.PerlinNoise(GemCoords.x, GemCoords.y);
+
+        if (gemNoise > 0.85f)
+        {
+            setType(6);
+        }
+        else
+        {
+            if (transform.position.sqrMagnitude < 10 * 10)
+            {
+                if (noiseVal < 0.35f)
+                    setType(0);
+                else if (noiseVal < 0.65f)
+                    setType(1);
+                else if (noiseVal < 0.9f)
+                    setType(2);
+                else
+                    setType(3);
+            }
+            else if (transform.position.sqrMagnitude < 20 * 20)
+            {
+                float lerpVal = (transform.position.magnitude - 10) / 10;
+                lerpVal *= Mathf.PerlinNoise(stardardGridCoords.x * 0.5f, stardardGridCoords.y * 0.5f) / 2;
+
+                if (noiseVal + lerpVal < 0.5f)
+                    setType(0);
+                else if (noiseVal + lerpVal < 1.5f)
+                    setType(1);
+                else
+                    setType(4);
+            }
+            else
+            {
+                if (noiseVal < 0.5f)
+                    setType(1);
+                else if (noiseVal < 0.75f)
+                    setType(4);
+                else
+                    setType(5);
+            }
+        }
     }
 
     public void setType(int type)
@@ -88,18 +135,31 @@ public class Wall : MonoBehaviour
         if (wear < strength)
         {
             mat.SetFloat("_Dither", (wear / strength) * 3);
-            
+            transform.parent.GetComponent<Chunck>().WearChild(transform.GetSiblingIndex(), wear);
             return false;
         }
         else
         {
-            Break();
+            transform.parent.GetComponent<Chunck>().BreakChild(transform.GetSiblingIndex());
             return true;
         }
     }
 
+    public void Wear(float w)
+    {
+        wear = w;
+
+        if (wear < strength)
+            mat.SetFloat("_Dither", (wear / strength) * 3);
+
+    }
+
     public void Break()
     {
+        if (broken)
+            return;
+
+        broken = true;
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
 

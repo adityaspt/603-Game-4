@@ -1,29 +1,37 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public static LevelGenerator self;
+
     public GameObject tile;
     public int seed;
 
     public int width;
     public int height;
 
-    private Vector2 start;
+    public static Vector2 start;
     private float scale;
     private float cellWidth;
-    private List<Vector2> cells;
+    private List<Vector2> cells = new List<Vector2>();
     public Vector2 currentCell;
     private Transform player;
 
     [SerializeField]
-    float radiusOfCentreArea;
+    public float radiusOfCentreArea;
+
+    private PhotonView PV;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("player").transform;
+        self = this;
+
+        player = playerController.localController.transform;
+        PV = GetComponent<PhotonView>();
 
         Random.seed = seed;
         start = new Vector2(Random.Range(500, 1000), Random.Range(500, 1000));
@@ -32,16 +40,16 @@ public class LevelGenerator : MonoBehaviour
         cellWidth = scale * width;
 
         currentCell = new Vector2(0, 0);
-        cells = new List<Vector2>();
         //cells.Add(new Vector2(currentCell.x, currentCell.y));
 
         makeAdjacentCells();
     }
 
-
-
     void makeAdjacentCells()
     {
+        if (!PhotonRoom.room.isGameLoaded)
+            return;
+
         for (int i = -1; i < 2; i++)
         {
             for (int j = -1; j < 2; j++)
@@ -49,13 +57,24 @@ public class LevelGenerator : MonoBehaviour
                 Vector2 tryCell = new Vector2(i, j) + currentCell;
                 if (!cells.Contains(tryCell))
                 {
-                    createCellAt(tryCell);
-                    cells.Add(tryCell);
+                    Debug.Log("LOCAL");
+                    PV.RPC("AddCell", RpcTarget.AllBufferedViaServer, tryCell.x, tryCell.y);
+                    PhotonNetwork.Instantiate("Chunk", tryCell * cellWidth, Quaternion.identity);
+                    //createCellAt(tryCell);
                 }
             }
         }
     }
 
+    [PunRPC]
+    public void AddCell(float x, float y)
+    {
+        Debug.Log("Adding Cell: " + x + ", " + y);
+        Vector2 cell = new Vector2(x, y);
+        cells.Add(cell);
+    }
+
+    /* OLD NON-MULTIPLAYER CODE
     void createCellAt(Vector2 cell)
     {
         for (int i = - width / 2; i < width / 2; i++)
@@ -67,11 +86,12 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-   
     void createWallAt(Vector2 pos)
     {
         if (pos.sqrMagnitude > radiusOfCentreArea)
         {
+            PhotonNetwork.Instantiate("WallTile 1", pos, Quaternion.identity);
+
             Wall wall = Instantiate(tile, pos, Quaternion.identity, transform).GetComponent<Wall>();
             Vector2 stardardGridCoords = start + pos * 0.2f;
             float noiseVal = Mathf.PerlinNoise(stardardGridCoords.x, stardardGridCoords.y);
@@ -119,10 +139,14 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
+    */
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+            player = playerController.localController.transform;
+
         Vector2 playerCell = new Vector2(Mathf.Round(player.position.x /cellWidth), Mathf.Round(player.position.y / cellWidth));
         if (playerCell != currentCell)
         {

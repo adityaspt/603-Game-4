@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
 public class playerController : MonoBehaviour
 {
-
+    public static playerController localController;
 
     [Header("Player Variables")]
     [SerializeField]
@@ -59,20 +60,41 @@ public class playerController : MonoBehaviour
 
     public float bombRadius;
 
+    private PhotonView PV;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        PV = GetComponent<PhotonView>();
+        if (PV.IsMine)
+            localController = this;
+        else
+        {
+            transform.GetChild(0).GetChild(0).GetComponent<Drill>().enabled = false;
+            transform.GetChild(0).GetChild(0).GetComponent<drillRotation>().enabled = false;
+            rb2d.simulated = false;
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0;
+        pauseCanvas = PlayerInfo.instance.pauseCanvas;
+        dropBoxReference = PlayerInfo.instance.dropBoxReference;
+        shopCanvas = PlayerInfo.instance.shopCanvas;
+        itemCanvas = PlayerInfo.instance.itemCanvas;
+        goldCanvas = PlayerInfo.instance.goldCanvas;
+        confirmCanvas = PlayerInfo.instance.confirmCanvas;
+        compass = PlayerInfo.instance.compass;
+        resourceManager = PlayerInfo.instance.resourceManager;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!PV.IsMine)
+            return;
+
         //Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -87,7 +109,7 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             pauseCanvas.gameObject.SetActive(true);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.C))
@@ -129,7 +151,7 @@ public class playerController : MonoBehaviour
 
         if (isTouchingShop && Input.GetKeyDown(KeyCode.F))
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             shopCanvas.gameObject.SetActive(true);
         }
 
@@ -157,6 +179,9 @@ public class playerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!PV.IsMine)
+            return;
+
         //Movement
         rb2d.MovePosition(rb2d.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
@@ -171,6 +196,8 @@ public class playerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!PV.IsMine)
+            return;
 
         if (collision.gameObject.CompareTag("DropBox"))
         {
@@ -185,7 +212,9 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
+        if (!PV.IsMine)
+            return;
+
         if (collision.gameObject.CompareTag("Gold"))
         {
             if (resourceManager.goldAmount < resourceManager.goldBagCapacity)
@@ -242,8 +271,9 @@ public class playerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (!PV.IsMine)
+            return;
 
-        
         if (collision.gameObject.CompareTag("DropBox"))
         {
             isTouchingDropbox = false;
@@ -256,6 +286,8 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!PV.IsMine)
+            return;
 
         if (collision.gameObject.CompareTag("Shop"))
         {
@@ -267,6 +299,8 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (!PV.IsMine)
+            return;
 
         if (collision.gameObject.CompareTag("Shop"))
         {
