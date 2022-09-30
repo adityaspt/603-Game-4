@@ -42,6 +42,14 @@ public class ResourceManager : MonoBehaviour
     [Header("Bag capacity stuff")]
     public int goldBagCapacity, coalBagCapacity, metalBagCapacity, gemBagCapacity;
 
+    [Header("Bag Capacity")]
+    public int totalBagCapacity;
+
+    [Header("Current Bag Capacity")]
+    public int currentBagCapacity=0;
+
+    public event EventHandler onBagAmountChanged;
+
     [Header("Done Object")]
     public GameObject doneObject;
     public int doneInt;
@@ -61,6 +69,7 @@ public class ResourceManager : MonoBehaviour
     {
         onResourceAmountChanged -= uiController.uiControllerInstance.updateResourceAmountTextUI;
         onItemAmountChanged -= uiController.uiControllerInstance.updateItemAmountTextUI;
+        onBagAmountChanged -= uiController.uiControllerInstance.updateBagCapacityAmountTextUI;
     }
 
     // Start is called before the first frame update
@@ -70,6 +79,7 @@ public class ResourceManager : MonoBehaviour
         premiumCurrencyAmount = 3;
         onResourceAmountChanged += uiController.uiControllerInstance.updateResourceAmountTextUI;
         onItemAmountChanged += uiController.uiControllerInstance.updateItemAmountTextUI;
+        onBagAmountChanged += uiController.uiControllerInstance.updateBagCapacityAmountTextUI;
     }
 
     // Update is called once per frame
@@ -121,6 +131,12 @@ public class ResourceManager : MonoBehaviour
     }
     //
 
+    //Update bag capacity
+    public void updateCurrentBagCapacity()
+    {
+        currentBagCapacity++;
+        onBagAmountChanged?.Invoke(this, EventArgs.Empty);
+    }
 
     //Add Items
     public void updateItemAmount(ItemType iT, bool isAdding, int number)

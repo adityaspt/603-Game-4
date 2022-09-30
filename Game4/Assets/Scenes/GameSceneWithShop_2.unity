@@ -1906,6 +1906,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3142108083085468647, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
   m_PrefabInstance: {fileID: 938230701}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &462906292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8452308008279333433, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+  m_PrefabInstance: {fileID: 938230701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &472880221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,7 +2292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &577927965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,57 +2805,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: gemAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: coalAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
       propertyPath: doneObject
       value: 
       objectReference: {fileID: 1126215576}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: goldAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: metalAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: gemBagCapacity
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: coalBagCapacity
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: goldBagCapacity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: gemAmountStorage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: metalBagCapacity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: coalAmountStorage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: goldAmountStorage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195424054214345523, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
-      propertyPath: metalAmountStorage
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 1195424054214345532, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
       propertyPath: gemText
       value: 
@@ -2879,6 +2836,10 @@ PrefabInstance:
       propertyPath: torchesText
       value: 
       objectReference: {fileID: 1093508578}
+    - target: {fileID: 1195424054214345532, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
+      propertyPath: bagCapacityText
+      value: 
+      objectReference: {fileID: 462906292}
     - target: {fileID: 1195424054214345532, guid: 486de31cfa9acb040bbd3114848e0616, type: 3}
       propertyPath: resourceUIParent
       value: 
@@ -3115,9 +3076,57 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 902596574, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 902596575, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_text
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 902596575, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_fontSize
+      value: 16.7
+      objectReference: {fileID: 0}
     - target: {fileID: 924052547, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
       propertyPath: m_Text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 715614922820706210, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.1800003
+      objectReference: {fileID: 0}
+    - target: {fileID: 737788485866700471, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_text
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 737788485866700471, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_fontSize
+      value: 16.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664624971635868151, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_text
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664624971635868151, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_fontSize
+      value: 16.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025693535427571546, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_text
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025693535427571546, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_fontSize
+      value: 16.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142108082851314898, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 321.272
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142108082851314898, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 91.887
       objectReference: {fileID: 0}
     - target: {fileID: 3142108083085468647, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
       propertyPath: m_Name
@@ -3206,6 +3215,18 @@ PrefabInstance:
     - target: {fileID: 3142108083085468651, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955470096634207067, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209534574487444942, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598913686128922648, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23c5c98ea70916948ba2093630b37e61, type: 3}
@@ -5171,6 +5192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourceSpawnParent
       objectReference: {fileID: 0}
+    - target: {fileID: 6425460296726050993, guid: a8c48be4617b058478a6e84757946520, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6425460296726050995, guid: a8c48be4617b058478a6e84757946520, type: 3}
       propertyPath: resourceDropIntensity
       value: 7
@@ -5727,14 +5752,14 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0021505377
-    width: 0.9431681
-    height: 0.9435484
+    y: 0
+    width: 1
+    height: 0.9988118
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.21875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

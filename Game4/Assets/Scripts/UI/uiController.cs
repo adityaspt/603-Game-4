@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class uiController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class uiController : MonoBehaviour
 
     //resource objects
     [SerializeField]
-    GameObject goldText, coalText, metalText, gemText;
+    GameObject goldText, coalText, metalText, gemText, bagCapacityText;
 
     //Items objects
     [SerializeField]
@@ -29,21 +30,29 @@ public class uiController : MonoBehaviour
     {
         int rtInt = (int)e.resourceType;
         print("updating UI");
-        switch(rtInt)
-            {
+        switch (rtInt)
+        {
             case 0: //coal
-                coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.coalBagCapacity.ToString();
-                    break;
+                coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString(); //+ "/" + ResourceManager.resourceManagerInstance.coalBagCapacity.ToString();
+                break;
             case 1: //metal
-                metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.metalBagCapacity.ToString();
+                metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString(); //+ "/" + ResourceManager.resourceManagerInstance.metalBagCapacity.ToString();
                 break;
             case 2: //gem
-                gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.gemBagCapacity.ToString();
+                gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString(); //+ "/" + ResourceManager.resourceManagerInstance.gemBagCapacity.ToString();
                 break;
             case 3: //gold
-                goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.goldBagCapacity.ToString();
+                goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString(); //+ "/" + ResourceManager.resourceManagerInstance.goldBagCapacity.ToString();
                 break;
+
         }
+    }
+
+    //new function
+    public void updateBagCapacityAmountTextUI(object sender, EventArgs e)
+    {
+        //bag capacity
+        bagCapacityText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.currentBagCapacity.ToString() + "/" + ResourceManager.resourceManagerInstance.totalBagCapacity.ToString();
     }
 
     public void updateItemAmountTextUI(object sender, eventTriggerSet.itemEventTrigger e)
@@ -70,19 +79,29 @@ public class uiController : MonoBehaviour
         //SoundManager.PlayBackgroundMusic();
         //Update all the text at start
         UpdateAllPlayerResourcesUI();
+        
         //Update all the Item amount text
         bombsText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.bombs.ToString();
         torchesText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.torches.ToString();
+
+        //Update Bag Capacity amount text in the start
+        UpdateCurrentBagCapacity();
+       
     }
 
+    public void UpdateCurrentBagCapacity()
+    {
+        ResourceManager.resourceManagerInstance.currentBagCapacity = ResourceManager.resourceManagerInstance.coalAmount + ResourceManager.resourceManagerInstance.metalAmount + ResourceManager.resourceManagerInstance.gemAmount + ResourceManager.resourceManagerInstance.goldAmount;
+        bagCapacityText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.currentBagCapacity.ToString() + "/" + ResourceManager.resourceManagerInstance.totalBagCapacity.ToString();
+    }
 
     public void UpdateAllPlayerResourcesUI()
     {
         //Update all the player Resources amount UI text
-        coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString()+"/"+ResourceManager.resourceManagerInstance.coalBagCapacity.ToString();
-        metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.metalBagCapacity.ToString();
-        gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.gemBagCapacity.ToString();
-        goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString() + "/" + ResourceManager.resourceManagerInstance.goldBagCapacity.ToString();
+        coalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.coalAmount.ToString(); //+ "/" + ResourceManager.resourceManagerInstance.coalBagCapacity.ToString();
+        metalText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.metalAmount.ToString(); //+ "/" + ResourceManager.resourceManagerInstance.metalBagCapacity.ToString();
+        gemText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.gemAmount.ToString(); //+ "/" + ResourceManager.resourceManagerInstance.gemBagCapacity.ToString();
+        goldText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.goldAmount.ToString(); //+ "/" + ResourceManager.resourceManagerInstance.goldBagCapacity.ToString();
     }
 
 
@@ -91,7 +110,7 @@ public class uiController : MonoBehaviour
         SoundManager.PlaySound(SoundManager.Sounds.clickSFX);
         resourceUIParent.SetActive(true);
         PauseCanvas.SetActive(false);
-      
+
         Time.timeScale = 1;
     }
 

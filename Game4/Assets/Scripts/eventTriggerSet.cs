@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class eventTriggerSet
 {
+
+
     [Serializable]
     public class resourceEventTrigger : EventArgs
     {
@@ -16,4 +18,5 @@ public class eventTriggerSet
     {
         public ResourceManager.ItemType itemType;
     }
+
 }

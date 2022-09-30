@@ -217,9 +217,10 @@ public class playerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Gold"))
         {
-            if (resourceManager.goldAmount < resourceManager.goldBagCapacity)
+            if (resourceManager.currentBagCapacity < resourceManager.totalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gold);
+                ResourceManager.resourceManagerInstance.updateCurrentBagCapacity();
                 SoundManager.PlaySound(SoundManager.Sounds.resourceCollectSFX);
                 Destroy(collision.gameObject);
             }
@@ -230,9 +231,10 @@ public class playerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Coal"))
         {
-            if (resourceManager.coalAmount < resourceManager.coalBagCapacity)
+            if (resourceManager.currentBagCapacity < resourceManager.totalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.coal);
+                ResourceManager.resourceManagerInstance.updateCurrentBagCapacity();
                 SoundManager.PlaySound(SoundManager.Sounds.resourceCollectSFX);
                 Destroy(collision.gameObject);
             }
@@ -243,9 +245,10 @@ public class playerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Metal"))
         {
-            if (resourceManager.metalAmount < resourceManager.metalBagCapacity)
+            if (resourceManager.currentBagCapacity < resourceManager.totalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.metal);
+                ResourceManager.resourceManagerInstance.updateCurrentBagCapacity();
                 SoundManager.PlaySound(SoundManager.Sounds.resourceCollectSFX);
                 Destroy(collision.gameObject);
             }
@@ -256,9 +259,10 @@ public class playerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Gems"))
         {
-            if (resourceManager.gemAmount < resourceManager.gemBagCapacity)
+            if (resourceManager.currentBagCapacity < resourceManager.totalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gem);
+                ResourceManager.resourceManagerInstance.updateCurrentBagCapacity();
                 SoundManager.PlaySound(SoundManager.Sounds.resourceCollectSFX);
                 Destroy(collision.gameObject);
             }
