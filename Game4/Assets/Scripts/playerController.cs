@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
@@ -57,6 +58,9 @@ public class playerController : MonoBehaviour
     [Header("Script References")]
     [SerializeField]
     ResourceManager resourceManager;
+
+    public Slider drillSlider;
+    public float drillChargingSpeed = 20.0f;
 
     public float bombRadius;
 
@@ -270,6 +274,12 @@ public class playerController : MonoBehaviour
             {
                 popUpText();
             }
+        }
+        
+        if (collision.gameObject.CompareTag("RechargingStation"))
+        {
+            Debug.Log("Entered Charging Station");
+            drillSlider.value += drillChargingSpeed * Time.deltaTime;
         }
     }
 

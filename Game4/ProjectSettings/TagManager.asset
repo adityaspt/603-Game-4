@@ -12,6 +12,8 @@ TagManager:
   - Drill
   - DropBox
   - Shop
+  - DrillChargeBar
+  - RechargingStation
   layers:
   - Default
   - TransparentFX

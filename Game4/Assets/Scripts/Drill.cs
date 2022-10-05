@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Drill : MonoBehaviour
 {
     public List<Wall> currentWalls = new List<Wall>();
     public float drillSpeed = 1;
+    public float drillChargeConsumption = 20.0f;
     public bool isDrilling;
     public GameObject drillVFX;
+    public Slider drillSlider;
 
     private Animator animator;
 
@@ -15,7 +18,8 @@ public class Drill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();   
+        animator = GetComponent<Animator>();
+        drillSlider = GameObject.FindGameObjectWithTag("DrillChargeBar").GetComponent<Slider>();
     }
 
     public void UpSize()
@@ -48,14 +52,22 @@ public class Drill : MonoBehaviour
         animator.SetBool("IsDrilling", isDrilling);
         drillVFX.SetActive(isDrilling);
 
-        if (Input.GetMouseButton(0))
+        if (drillSlider.value > 0.0f)
         {
-            for (int i = 0; i < currentWalls.Count; i++)
+            if (Input.GetMouseButton(0))
             {
-                currentWalls[i].Drill(Time.deltaTime * drillSpeed);
-            }
+                for (int i = 0; i < currentWalls.Count; i++)
+                {
+                    currentWalls[i].Drill(Time.deltaTime * drillSpeed);
+                }
 
-            isDrilling = true;
+                isDrilling = true;
+                drillSlider.value -= drillChargeConsumption * Time.deltaTime;
+            }
+            else
+            {
+                isDrilling = false;
+            } 
         }
         else
         {
