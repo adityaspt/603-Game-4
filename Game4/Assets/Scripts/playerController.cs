@@ -26,7 +26,7 @@ public class playerController : MonoBehaviour
     [SerializeField]
     float popUpTextTime;
 
-    
+
     float popUpTimeCounter;
 
     [Header("Pause UI")]
@@ -148,12 +148,26 @@ public class playerController : MonoBehaviour
 
         }
 
-        if(Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             if (botNumber > 0)
             {
                 Instantiate(bot, transform.position, Quaternion.identity);
                 botNumber--;
+            }
+            else if(ResourceManager.resourceManagerInstance.currentBagResourceValue>25)
+            {
+                if (ResourceManager.resourceManagerInstance.coalAmount > 20 && ResourceManager.resourceManagerInstance.metalAmount > 5)
+                {
+                    for (int i = 0; i < 20; i++)
+                        ResourceManager.resourceManagerInstance.RemoveResourceAmount(ResourceManager.ResourceType.coal);
+                    for (int i = 0; i < 5; i++)
+                        ResourceManager.resourceManagerInstance.RemoveResourceAmount(ResourceManager.ResourceType.metal);
+                }
+            }
+            else
+            {
+                print("Cant spawn a bot");
             }
         }
 
@@ -187,15 +201,15 @@ public class playerController : MonoBehaviour
 
         if (setPopUpText)
         {
-            popUpTimeCounter +=Time.deltaTime;
+            popUpTimeCounter += Time.deltaTime;
             if (popUpTimeCounter >= popUpTextTime)
             {
                 ClosePopUpText();
             }
         }
 
-        
-       
+
+
     }
 
 
@@ -247,7 +261,7 @@ public class playerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Gold"))
         {
-            if (resourceManager.currentBagCapacity < resourceManager.totalBagCapacity)
+            if (resourceManager.currentBagResourceValue < resourceManager.totalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gold);
                 ResourceManager.resourceManagerInstance.updateCurrentBagCapacity();
@@ -261,7 +275,7 @@ public class playerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Coal"))
         {
-            if (resourceManager.currentBagCapacity < resourceManager.totalBagCapacity)
+            if (resourceManager.currentBagResourceValue < resourceManager.totalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.coal);
                 ResourceManager.resourceManagerInstance.updateCurrentBagCapacity();
@@ -275,7 +289,7 @@ public class playerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Metal"))
         {
-            if (resourceManager.currentBagCapacity < resourceManager.totalBagCapacity)
+            if (resourceManager.currentBagResourceValue < resourceManager.totalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.metal);
                 ResourceManager.resourceManagerInstance.updateCurrentBagCapacity();
@@ -289,7 +303,7 @@ public class playerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Gems"))
         {
-            if (resourceManager.currentBagCapacity < resourceManager.totalBagCapacity)
+            if (resourceManager.currentBagResourceValue < resourceManager.totalBagCapacity)
             {
                 ResourceManager.resourceManagerInstance.AddResourceAmount(ResourceManager.ResourceType.gem);
                 ResourceManager.resourceManagerInstance.updateCurrentBagCapacity();
@@ -301,7 +315,7 @@ public class playerController : MonoBehaviour
                 popUpText();
             }
         }
-        
+
         if (collision.gameObject.CompareTag("RechargingStation"))
         {
             drillSlider.value += drillChargingSpeed * Time.deltaTime;
@@ -320,7 +334,7 @@ public class playerController : MonoBehaviour
             dropBoxReference.animator.SetBool("IsOpen", isTouchingDropbox);
         }
 
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -332,8 +346,8 @@ public class playerController : MonoBehaviour
         {
             isTouchingShop = true;
         }
-        
- 
+
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

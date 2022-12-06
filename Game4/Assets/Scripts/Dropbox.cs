@@ -63,7 +63,7 @@ public class Dropbox : MonoBehaviour
             ResourceManager.resourceManagerInstance.coalAmount = 0;
         }
 
-        ResourceManager.resourceManagerInstance.currentBagCapacity = 0;
+        ResourceManager.resourceManagerInstance.currentBagResourceValue = 0;
 
         uiController.uiControllerInstance.UpdateCurrentBagCapacity();
 

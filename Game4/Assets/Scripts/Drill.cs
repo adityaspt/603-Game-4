@@ -35,6 +35,8 @@ public class Drill : MonoBehaviour
         {
             currentWalls.Add(collision.GetComponent<Wall>());
         }
+
+       
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -67,13 +69,24 @@ public class Drill : MonoBehaviour
             else
             {
                 isDrilling = false;
-            } 
+            }
         }
         else
         {
             isDrilling = false;
         }
 
-       // isDrilling = false;
+        // isDrilling = false;
     }
+
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Enemy")
+    //    {
+    //        print("Drill Colliding with enemy");
+    //        Destroy(collision.gameObject);
+
+    //    }
+    //}
 }

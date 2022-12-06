@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 179376718}
   - component: {fileID: 179376720}
   - component: {fileID: 179376719}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 293383817}
   - component: {fileID: 293383816}
   - component: {fileID: 293383815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 690175336}
   - component: {fileID: 690175338}
   - component: {fileID: 690175337}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 859310725}
   - component: {fileID: 859310727}
   - component: {fileID: 859310726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 968169874}
   - component: {fileID: 968169876}
   - component: {fileID: 968169875}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116912676}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 1190483716}
   - component: {fileID: 1190483718}
   - component: {fileID: 1190483717}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1561707677}
   - component: {fileID: 1561707678}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Drill Power
   m_TagString: DrillChargeBar
   m_Icon: {fileID: 0}
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 1900071121}
   - component: {fileID: 1900071123}
   - component: {fileID: 1900071122}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2101363582}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7542658467288454148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VFX_Drill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5227029863798158218}
   - component: {fileID: 5227029863798158219}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1000,7 +1000,7 @@ GameObject:
   - component: {fileID: 5227029864365343919}
   - component: {fileID: 1837877557}
   - component: {fileID: 7245576246141820260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1205,7 +1205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5227029864441341932}
   - component: {fileID: 1669245835}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1258,7 +1258,7 @@ GameObject:
   - component: {fileID: 5227029864760984011}
   - component: {fileID: 5227029864760984010}
   - component: {fileID: 5227029864760984015}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Drill
   m_TagString: Drill
   m_Icon: {fileID: 0}
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWalls: []
   drillSpeed: 1
-  drillChargeConsumption: 20
+  drillChargeConsumption: 3.5
   isDrilling: 0
   drillVFX: {fileID: 1705359484353974389}
   drillSlider: {fileID: 0}
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 6751827710652436947}
   - component: {fileID: 7250240740133771202}
   - component: {fileID: 7797325544340616025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OmniDirectional_ROT
   m_TagString: Untagged
   m_Icon: {fileID: 0}

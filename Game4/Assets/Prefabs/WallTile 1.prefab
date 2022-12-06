@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 511950589911109846}
   - component: {fileID: 1381365481}
   - component: {fileID: 1381365482}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallTile 1
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 6472328892931671366}
   - component: {fileID: 3494137304445045492}
   - component: {fileID: 5826753819699510354}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OmniDirectional_Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5009,7 +5009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2494902949259794903}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlockVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

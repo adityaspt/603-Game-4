@@ -52,7 +52,7 @@ public class uiController : MonoBehaviour
     public void updateBagCapacityAmountTextUI(object sender, EventArgs e)
     {
         //bag capacity
-        bagCapacityText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.currentBagCapacity.ToString() + "/" + ResourceManager.resourceManagerInstance.totalBagCapacity.ToString();
+        bagCapacityText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.currentBagResourceValue.ToString() + "/" + ResourceManager.resourceManagerInstance.totalBagCapacity.ToString();
     }
 
     public void updateItemAmountTextUI(object sender, eventTriggerSet.itemEventTrigger e)
@@ -91,8 +91,8 @@ public class uiController : MonoBehaviour
 
     public void UpdateCurrentBagCapacity()
     {
-        ResourceManager.resourceManagerInstance.currentBagCapacity = ResourceManager.resourceManagerInstance.coalAmount + ResourceManager.resourceManagerInstance.metalAmount + ResourceManager.resourceManagerInstance.gemAmount + ResourceManager.resourceManagerInstance.goldAmount;
-        bagCapacityText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.currentBagCapacity.ToString() + "/" + ResourceManager.resourceManagerInstance.totalBagCapacity.ToString();
+        ResourceManager.resourceManagerInstance.currentBagResourceValue = ResourceManager.resourceManagerInstance.coalAmount + ResourceManager.resourceManagerInstance.metalAmount + ResourceManager.resourceManagerInstance.gemAmount + ResourceManager.resourceManagerInstance.goldAmount;
+        bagCapacityText.GetComponent<TextMeshProUGUI>().text = ResourceManager.resourceManagerInstance.currentBagResourceValue.ToString() + "/" + ResourceManager.resourceManagerInstance.totalBagCapacity.ToString();
     }
 
     public void UpdateAllPlayerResourcesUI()

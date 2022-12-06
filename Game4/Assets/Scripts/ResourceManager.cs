@@ -45,8 +45,8 @@ public class ResourceManager : MonoBehaviour
     [Header("Bag Capacity")]
     public int totalBagCapacity;
 
-    [Header("Current Bag Capacity")]
-    public int currentBagCapacity=0;
+    [Header("Current Bag Resource Value")]
+    public int currentBagResourceValue=0;
 
     public event EventHandler onBagAmountChanged;
 
@@ -131,10 +131,58 @@ public class ResourceManager : MonoBehaviour
     }
     //
 
+    /// <summary>
+    /// Remove one resource of the desired resource from player
+    /// </summary>
+    /// <param name="rt"></param>
+    public void RemoveResourceAmount(ResourceType rt)
+    {
+        int resourceTypeInt = (int)rt;
+        switch (resourceTypeInt)
+        {
+            case 0:
+                coalAmount--;
+                break;
+            case 1:
+                metalAmount--;
+                break;
+            case 2:
+                gemAmount--;
+                break;
+            case 4:
+                goldAmount--;
+                break;
+        }
+        print("Resource removed " + rt.ToString());
+        onResourceAmountChanged?.Invoke(this, new eventTriggerSet.resourceEventTrigger { resourceType = rt });
+    }
+
+    /// <summary>
+    /// Reduces the resources in the order except for gold
+    /// </summary>
+    public void SelectToReduceResourceOnEnemyAttack()
+    {
+        if (currentBagResourceValue > 0)
+        {
+            if (coalAmount > 0)
+            {
+                RemoveResourceAmount(ResourceType.coal);
+            }
+            else if (metalAmount > 0)
+            {
+                RemoveResourceAmount(ResourceType.metal);
+            }
+            else if (gemAmount > 0)
+            {
+                RemoveResourceAmount(ResourceType.gem);
+            }
+        }
+    }
+
     //Update bag capacity
     public void updateCurrentBagCapacity()
     {
-        currentBagCapacity++;
+        currentBagResourceValue++;
         onBagAmountChanged?.Invoke(this, EventArgs.Empty);
     }
 
