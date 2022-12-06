@@ -24,6 +24,11 @@ public class Wall : MonoBehaviour
     {
         wallVFX.gameObject.SetActive(false);
 
+        chooseType();
+    }
+
+    void chooseType()
+    {
         // set the type for this block
         Vector2 stardardGridCoords = LevelGenerator.start + (Vector2)transform.position * 0.2f;
         float noiseVal = Mathf.PerlinNoise(stardardGridCoords.x, stardardGridCoords.y);

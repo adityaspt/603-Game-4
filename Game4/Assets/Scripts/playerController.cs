@@ -10,6 +10,9 @@ public class playerController : MonoBehaviour
     public static playerController localController;
 
     [Header("Player Variables")]
+    public Sprite[] playerStyles;
+
+    [Header("Player Variables")]
     [SerializeField]
     private float moveSpeed = 5f;
 
@@ -68,6 +71,17 @@ public class playerController : MonoBehaviour
     public float bombRadius;
 
     private PhotonView PV;
+
+    public void changeStylesMultiplayer(int i)
+    {
+        PV.RPC("changeStyle", RpcTarget.AllBuffered, i);
+    }
+
+    [PunRPC]
+    void changeStyle(int i)
+    {
+        GetComponent<SpriteRenderer>().sprite = playerStyles[i];
+    }
 
     private void Awake()
     {
@@ -134,7 +148,7 @@ public class playerController : MonoBehaviour
 
         }
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.B))
         {
             if (botNumber > 0)
             {

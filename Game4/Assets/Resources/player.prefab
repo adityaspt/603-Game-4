@@ -1110,6 +1110,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e8f1f9d06c4bb49a5cb59852dbc984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStyles:
+  - {fileID: 21300000, guid: 0cb15a61868dd1b4292cfb4412c480cc, type: 3}
+  - {fileID: 21300000, guid: f97aaa8979a78c54bb8807cf01d8af0e, type: 3}
+  - {fileID: 21300000, guid: ee9a32326fde71a4fa636cf796e1cfdf, type: 3}
+  - {fileID: 21300000, guid: 316052c68a51ad3499b47ffa2a78f087, type: 3}
+  - {fileID: 21300000, guid: e04228647645e5c41b16c390da35e77f, type: 3}
+  - {fileID: 21300000, guid: 6127c90cc8ffd5a4381aa61a8714555a, type: 3}
+  - {fileID: 21300000, guid: 1208473a7a324cf469b1af65feccc909, type: 3}
   moveSpeed: 5
   playerPopUpText: {fileID: 690175335}
   popUpTextTime: 1.5
@@ -1127,6 +1135,7 @@ MonoBehaviour:
   compassActive: 0
   resourceManager: {fileID: 0}
   bot: {fileID: 5227029864365343914, guid: a1ecafaceab15c24885013cb1a23d5be, type: 3}
+  botNumber: 5
   drillSlider: {fileID: 1561707678}
   drillChargingSpeed: 10
   bombRadius: 7

@@ -10,6 +10,8 @@ public class Chunck : MonoBehaviour
     private PhotonView PV;
     private bool isInit = false;
 
+    public Chunck[] neighbors = new Chunck[8];
+
     struct WearBlockData
     {
         public int i;

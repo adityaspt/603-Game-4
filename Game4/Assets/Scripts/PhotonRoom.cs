@@ -65,7 +65,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         //GameObject.Find("PlayerController").transform.position = spawnLoc;
         Vector3 loc = new Vector3(-0.5f, -1.3f, 0);
         GameObject vis_player = PhotonNetwork.Instantiate("player", loc, Quaternion.identity, 0);
-        //vis_player.GetComponent<MultiplayerVRPlayer>().playerCol = playerCol;
+        Random.seed = (int)(Time.realtimeSinceStartup * 1000);
+        vis_player.GetComponent<playerController>().changeStylesMultiplayer(Random.Range(0,7));
     }
 
     // Start is called before the first frame update
