@@ -59,6 +59,9 @@ public class playerController : MonoBehaviour
     [SerializeField]
     ResourceManager resourceManager;
 
+    [SerializeField] public GameObject bot;
+    [SerializeField] private float botNumber = 5;
+
     public Slider drillSlider;
     public float drillChargingSpeed = 20.0f;
 
@@ -129,6 +132,15 @@ public class playerController : MonoBehaviour
                 compass.gameObject.SetActive(true);
             }
 
+        }
+
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if (botNumber > 0)
+            {
+                Instantiate(bot, transform.position, Quaternion.identity);
+                botNumber--;
+            }
         }
 
         // Bomb key
@@ -278,7 +290,6 @@ public class playerController : MonoBehaviour
         
         if (collision.gameObject.CompareTag("RechargingStation"))
         {
-            Debug.Log("Entered Charging Station");
             drillSlider.value += drillChargingSpeed * Time.deltaTime;
         }
     }

@@ -1126,6 +1126,7 @@ MonoBehaviour:
   compass: {fileID: 0}
   compassActive: 0
   resourceManager: {fileID: 0}
+  bot: {fileID: 5227029864365343914, guid: a1ecafaceab15c24885013cb1a23d5be, type: 3}
   drillSlider: {fileID: 1561707678}
   drillChargingSpeed: 10
   bombRadius: 7
